@@ -3,9 +3,9 @@
 # R!DE ON
 
 ## 概要
-
+自転車を楽しむ人のために、サイクリングコースの情報共有するサイト
 ## コンセプト
-
+自転車で出かけたいけどどこに行けば良いかわからない、休憩場所は？トイレはどうする？といった不安を解消する
 ## バージョン
 Ruby 2.5.3  
 Rails 5.2.1  
@@ -22,6 +22,7 @@ Rails 5.2.1
   [ ] スポット編集機能
   [ ] スポット削除機能
     [ ] スポット編集と削除は投稿者 or 管理人のみ実行可能
+  [ ] スポットコメント機能
   [ ] スポットいいね機能
       [ ] スポットへのいいねは1つのスポットに対して1人1回しかできない
       [ ] 自分自身の投稿にはいいねができない
@@ -30,11 +31,14 @@ Rails 5.2.1
 　     [ ] 自分自身の投稿はお気に入りができない
 　 [ ] 自分自身の投稿にはいいねができない
 
+## カタログ設計
+　https://docs.google.com/spreadsheets/d/1zG4kDDiS4ucqqBxrzHuv8KqRa4GX-yvrnfudo1Huook/edit?usp=sharing
+
 ## テーブル定義
-   (googleスプレッドシートなどに記載して、urlを項目内に貼り付け)
+  https://docs.google.com/spreadsheets/d/15utTC0JKQOG81DPjXzWETL8TmWhE8-igLcQIRanM3Sc/edit?usp=sharing
 
 ## 画面遷移図
-  (googleスプレッドシートなどに記載して、urlを項目内に貼り付け)
+  https://docs.google.com/spreadsheets/d/1CqLbWLTul6_URZ9hRJTL6ej65HWvGuc4xy0ABAtGXI0/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
   https://docs.google.com/spreadsheets/d/1cKK_IiveCLuICk--9rmxJhnSPitq7w6z0Nte2Qdh7Q8/edit?usp=sharing
