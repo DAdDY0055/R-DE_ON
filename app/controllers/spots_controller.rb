@@ -3,6 +3,10 @@ class SpotsController < ApplicationController
   end
 
   def new
+    @spot = Spot.new
+  end
+
+  def create
   end
 
   def show
@@ -10,4 +14,9 @@ class SpotsController < ApplicationController
 
   def edit
   end
+
+  def spot_params
+    params.require(:spot).permit(:spot_name, :address, :image, :image_cache, :spot_infomation)
+  end
+
 end
