@@ -7,8 +7,8 @@ class CreateSpots < ActiveRecord::Migration[5.2]
       t.string :spot_name
       t.text :spot_infomation
       t.string :spot_photo
-      t.int :user_id
-      t.nst :comment
+      t.integer :user_id
+      t.text :comment
       t.integer :like
       t.text :spot_tag
 
