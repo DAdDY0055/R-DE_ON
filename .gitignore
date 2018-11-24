@@ -25,3 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Uploadedfile
+/Users/takuya/DIC/original_api/RIDE_ON/public/uploads/tmp/*
+/Users/takuya/DIC/original_api/RIDE_ON/public/uploads/spot/spot_photo/*/*
