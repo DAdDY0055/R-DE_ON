@@ -27,5 +27,5 @@
 /config/master.key
 
 # Uploadedfile
-/Users/takuya/DIC/original_api/RIDE_ON/public/uploads/tmp/*
-/Users/takuya/DIC/original_api/RIDE_ON/public/uploads/spot/spot_photo/*/*
+/public/uploads/tmp/*
+/public/uploads/spot/spot_photo/*/*
