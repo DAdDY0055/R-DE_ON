@@ -1,3 +1,3 @@
 class Spot < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploader :spot_photo, ImageUploader
 end
