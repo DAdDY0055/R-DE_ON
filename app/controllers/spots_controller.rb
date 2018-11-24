@@ -8,12 +8,15 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    binding.pry
     require 'exifr/jpeg'
-    @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
-    @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
-    if @spot.save
-      # redirect_to spot_path, notice: '登録しました！'
+    binding.pry
+    if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
+      @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
+      @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
+    end
+      if @spot.save
+        binding.pry
+      # redirect_to spot_path, notice: '登録しました！'　　→ 詳細画面を作成した後コメントアウト解除する
     else
       render 'new'
     end
