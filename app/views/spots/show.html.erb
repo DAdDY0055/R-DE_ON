@@ -1,2 +1,56 @@
-<h1>Spots#show</h1>
-<p>Find me in app/views/spots/show.html.erb</p>
+<script type="text/javascript">
+    function initMap() {
+        var location ={lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
+        <% binding.pry %>
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: location
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+        var contentString = '住所：<%= @spot.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCBltBrif7nbSEbJ7F7obh2QC3-ggESfdI&callback=initMap">
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @spot.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @spot.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @spot.longitude %>
+</p>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
+<div id="map"></div>
+
+<%= link_to 'Edit', edit_map_path(@spot) %> |
+<%= link_to 'Back', maps_path %>
