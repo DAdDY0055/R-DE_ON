@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    @spot = Spot.all
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow spot.spot_name
@@ -22,13 +22,14 @@ class SpotsController < ApplicationController
     end
       if @spot.save
         binding.pry
-      # redirect_to spot_path, notice: '登録しました！'　　→ 詳細画面を作成した後コメントアウト解除する
+        redirect_to spots_path, notice: '登録しました！'
     else
       render 'new'
     end
   end
 
   def show
+    @spot = Spot.last
   end
 
   def edit

@@ -1,4 +1,12 @@
+<h3>Map</h3>
 <div id="map" style="width: 100％; height: 400px;"></div>
+
+<% @spot.each do |spot| %>
+  <p><%= spot.spot_name %></p>
+  <p><%= spot.address %></p>
+  <p><%= spot.spot_infomation %></p>
+  <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+<% end %>
 
 <script>
   handler = Gmaps.build('Google');
