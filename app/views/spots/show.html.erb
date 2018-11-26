@@ -23,7 +23,7 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCBltBrif7nbSEbJ7F7obh2QC3-ggESfdI&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap">
 </script>
 
 <p id="notice"><%= notice %></p>

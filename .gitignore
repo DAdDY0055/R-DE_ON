@@ -29,3 +29,6 @@
 # Uploadedfile
 /public/uploads/tmp/*
 /public/uploads/spot/spot_photo/*/*
+
+# Ignore env
+/.env
