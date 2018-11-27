@@ -1,7 +1,6 @@
 <script type="text/javascript">
     function initMap() {
         var location ={lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
-        <% binding.pry %>
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: location
@@ -13,7 +12,7 @@
             content: contentString
         });
         var marker = new google.maps.Marker({
-            position:test,
+            position:location,
             map: map,
             title: contentString
         });
@@ -27,6 +26,8 @@
 </script>
 
 <p id="notice"><%= notice %></p>
+
+<h2><%= @spot.spot_name %></h2>
 
 <p>
   <strong>Address:</strong>
@@ -52,5 +53,4 @@
 </style>
 <div id="map"></div>
 
-<%= link_to 'Edit', edit_map_path(@spot) %> |
-<%= link_to 'Back', maps_path %>
+<p><%= @spot.spot_infomation %></p>
