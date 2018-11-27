@@ -25,8 +25,6 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap">
 </script>
 
-<p id="notice"><%= notice %></p>
-
 <h2><%= @spot.spot_name %></h2>
 
 <p class="picture_content"><%= image_tag @spot.spot_photo.url %></p>
