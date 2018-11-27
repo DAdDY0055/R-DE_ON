@@ -1,2 +1,24 @@
-<h1>Spots#edit</h1>
-<p>Find me in app/views/spots/edit.html.erb</p>
+<%= form_with(model: @spot, local: true) do |form| %>
+  <div class="spot_field">
+    <%= form.label :スポット名 %>
+    <%= form.text_field :spot_name %>
+  </div>
+
+  <div class="spot_field">
+    <%= form.label :住所 %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="spot_field">
+    <%= form.label :写真 %>
+    <%= form.file_field :spot_photo %>
+  </div>
+
+  <div class="spot_field">
+    <%= form.label :スポット詳細 %>
+    <%= form.text_field :spot_infomation %>
+  </div>
+
+  <%= form.submit "登録する" %>
+<% end %>
+  

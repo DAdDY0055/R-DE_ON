@@ -33,6 +33,16 @@ class SpotsController < ApplicationController
   end
 
   def edit
+    @spot = Spot.find(params[:id])
+  end
+
+  def update
+    @spot = Spot.find(params[:id])
+    if @spot.update(spot_params)
+      redirect_to spot_path(@spot.id), notice: "投稿を編集しました"
+    else
+      render 'edit'
+    end
   end
 
   def spot_params
