@@ -4,13 +4,19 @@
     <%= form.text_field :spot_name %>
   </div>
 
+
+
   <div class="spot_field">
     <%= form.label :住所 %>
     <%= form.text_field :address %>
   </div>
 
   <div class="spot_field">
-    <%= form.label :写真 %>
+    
+    <%= form.label :現在の写真 %>
+    <%= image_tag @spot.spot_photo.url %>
+
+    <%= form.label :新しい写真 %>
     <%= form.file_field :spot_photo %>
   </div>
 
