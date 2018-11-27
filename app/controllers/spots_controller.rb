@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @spot = Spot.all
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
