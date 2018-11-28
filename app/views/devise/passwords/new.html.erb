@@ -1,4 +1,5 @@
-<h2>Forgot your password?</h2>
+<h2>パスワードを忘れた方はこちら</h2>
+<p>パスワードを忘れた方はリセット方法を送付しますので、以下に登録に利用したメールアドレスを入力してください</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
@@ -9,7 +10,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "パスワードリセット方法を送る" %>
   </div>
 <% end %>
 
