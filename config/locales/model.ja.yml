@@ -15,6 +15,7 @@ ja:
         title: "タイトル"
         name: "名前"
         email: "メールアドレス"
+        icon: "ユーザーアイコン"
         content: "内容"
         current_password: "現在のパスワード"
         password: "パスワード"
