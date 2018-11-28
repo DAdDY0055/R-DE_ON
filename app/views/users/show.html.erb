@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3>Map</h3>
+<div id="map" style="width: 100％; height: 400px;"></div>
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
+
+<h4><%= @user.name %>のお気に入り一覧</h4>
+
+<h4><%= @user.name %>の投稿一覧</h4>
+
+<% @spot.each do |spot| %>
+  <p><%= spot.spot_name %></p>
+  <p><%= spot.address %></p>
+  <p><%= spot.spot_infomation %></p>
+  <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+  <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+<% end %>
+
+<h1>プロフィール</h1>
+<p><%= image_tag @user.icon_url %></p>
+<p>ユーザー名　  : <%= @user.name %></p>
+<p>メールアドレス: <%= @user.email %></p>
