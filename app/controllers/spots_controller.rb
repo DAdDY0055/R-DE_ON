@@ -16,14 +16,13 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
+    @spot.user_id = current_user.id
     require 'exifr/jpeg'
-    binding.pry
     if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
       @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
       @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
     end
-      if @spot.save
-        binding.pry
+    if @spot.save
         redirect_to spots_path, notice: '登録しました！'
     else
       render 'new'
@@ -31,7 +30,8 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.last
+    @spot = Spot.find(params[:id])
+    @favorite = current_user.favorites.find_by(spot_id: @spot.id)
   end
 
   def edit

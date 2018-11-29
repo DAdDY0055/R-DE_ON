@@ -6,7 +6,8 @@
   <p><%= spot.address %></p>
   <p><%= spot.spot_infomation %></p>
   <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
-  <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+  <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+  <p>投稿者：<%= spot.user.name %></p>
 <% end %>
 
 <script>
