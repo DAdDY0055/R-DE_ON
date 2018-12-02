@@ -47,6 +47,12 @@ class SpotsController < ApplicationController
     end
   end
 
+  def destroy
+    @spot = Spot.find(params[:id])
+    @spot.destroy
+    redirect_to spots_path, notice:"投稿を削除しました。"
+  end
+
   def spot_params
     params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation)
   end
