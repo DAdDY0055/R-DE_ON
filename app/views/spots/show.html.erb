@@ -55,4 +55,12 @@
 
 <p><%= @spot.spot_infomation %></p>
 
+<% unless @spot.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
 <p><%= link_to "投稿を編集する", edit_spot_path(@spot.id) %></p>
