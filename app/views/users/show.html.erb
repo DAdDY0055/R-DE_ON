@@ -22,7 +22,10 @@
   <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
 <% end %>
 
-<h1>プロフィール</h1>
-<p><%= image_tag @user.icon_url %></p>
-<p>ユーザー名　  : <%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
+<div>
+  <h1>プロフィール</h1>
+  <p><%= image_tag @user.icon_url %></p>
+  <p>ユーザー名　  : <%= @user.name %></p>
+  <p>メールアドレス: <%= @user.email %></p>
+  <p><%= link_to 'ユーザ情報を変更する', edit_user_registration_path %></p>
+</div>
