@@ -21,3 +21,4 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        leave blank if you don't want to change it: "パスワードを変更したい場合のみ入力"
