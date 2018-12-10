@@ -53,6 +53,9 @@ class SpotsController < ApplicationController
     redirect_to spots_path, notice:"投稿を削除しました。"
   end
 
+  def like
+  end
+
   def spot_params
     params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation)
   end
