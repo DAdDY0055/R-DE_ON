@@ -63,5 +63,12 @@
   <% end %>
 <% end %>
 
+<% unless @spot.user_id == current_user.id %>
+  <div id="like-button">
+    <%= link_to "いいね！", likes_spot_path(@spot.id) %>
+    <%= @spot.like %>
+  </div>
+<% end %>
+
 <p><%= link_to "投稿を編集する", edit_spot_path(@spot.id) %></p>
 <p><%= link_to "投稿を削除する", spot_path(@spot.id), method: :delete, date: { confirm: "一度削除すると元には戻せません。本当に削除してもいいですか？" } %>

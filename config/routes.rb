@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'spots#index'
 
-  resources :spots
-  
+  resources :spots do
+    member do
+      get :likes
+    end
+  end
+    
   resources :users, :only => [:show]
 
   resources :favorites, only: [:create, :destroy]

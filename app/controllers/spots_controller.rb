@@ -53,7 +53,11 @@ class SpotsController < ApplicationController
     redirect_to spots_path, notice:"投稿を削除しました。"
   end
 
-  def like
+  def likes
+    @spot = Spot.find(params[:id])
+    @spot.like += 1
+    @spot.save
+    redirect_to spot_path(@spot.id), notice:"いいねしました！"
   end
 
   def spot_params
