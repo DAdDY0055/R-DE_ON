@@ -70,5 +70,11 @@
   </div>
 <% end %>
 
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, spot: @spot } %>
+</div>
+
+<%= render partial: 'comments/form', locals: { comment: @comment, spot: @spot } %>
+
 <p><%= link_to "投稿を編集する", edit_spot_path(@spot.id) %></p>
 <p><%= link_to "投稿を削除する", spot_path(@spot.id), method: :delete, date: { confirm: "一度削除すると元には戻せません。本当に削除してもいいですか？" } %>

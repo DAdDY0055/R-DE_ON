@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'spots#index'
 
   resources :spots do
+    resources :comments
     member do
       get :likes
     end
