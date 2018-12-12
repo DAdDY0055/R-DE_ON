@@ -62,6 +62,8 @@ class SpotsController < ApplicationController
     redirect_to spot_path(@spot.id), notice:"いいねしました！"
   end
 
+  private
+
   def spot_params
     params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation, spot_tag:[])
   end
