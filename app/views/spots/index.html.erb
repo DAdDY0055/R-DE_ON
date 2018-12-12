@@ -8,11 +8,21 @@
     <% @spot.each do |spot| %>
     <li class="col-md-4">
       <p><%= spot.spot_name %></p>
+
       <p><%= spot.address %></p>
+
       <p><%= spot.spot_infomation %></p>
+
       <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+
       <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+
       <p>投稿者：<%= spot.user.name %></p>
+
+      <% unless spot.spot_tag.nil? %>
+      <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+      <p><%= spot.spot_tag.gsub(/"/, '') %></p>
+      <% end %>
     </li>
     <% end %>
   </div>
