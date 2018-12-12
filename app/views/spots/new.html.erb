@@ -19,6 +19,15 @@
     <%= form.text_field :spot_infomation %>
   </div>
 
+  <div class="spot_field">
+    <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+    <label>
+      <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
+      <%= tag %>
+    </label>
+    <% end %>  
+  </div>
+
   <%= form.submit "登録する" %>
 <% end %>
   
