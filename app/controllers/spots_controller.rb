@@ -24,7 +24,8 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    @spot.spot_tag = @spot.spot_tag
+    # タグ情報を保存する際、"["と"]"を削除した状態で保存する
+    @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
 
     require 'exifr/jpeg'
     if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
