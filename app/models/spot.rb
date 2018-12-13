@@ -14,11 +14,14 @@ class Spot < ApplicationRecord
   after_validation :reverse_geocode
 
   def self.search(search)
-    if search # Controllerから渡されたパラメータが存在する場合(チェックボックスが選択された場合)spot_tagカラムを部分一致検索
-      tag = search.delete("[").delete("]") # 検索条件から部分一致で検索する際、邪魔になる"["と"]"を削除する
+    # Controllerから渡されたパラメータが存在する場合(チェックボックスが選択された場合)spot_tagカラムを部分一致検索
+    if search
+      # 検索条件から部分一致で検索する際、邪魔になる"["と"]"を削除する
+      tag = search.delete("[").delete("]")
       Spot.where('spot_tag like ?', "%#{tag}%")
     else
-      Spot.all # チェックボックスが選択されていない場合、全て表示。
+      # チェックボックスが選択されていない場合、全て表示。
+      Spot.all
     end
   end
 end
