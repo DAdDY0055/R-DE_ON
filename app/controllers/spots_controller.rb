@@ -3,12 +3,14 @@ class SpotsController < ApplicationController
 
   def index
     @spot = Spot.all
-    @searched_spot = Spot.search(params[:spot][:spot_tag])
+    # タグの絞り込みを行わなかった際、全てのスポットをマップに表示
+    if params[:spot].present?
+      @searched_spot = Spot&.search(params[:spot][:spot_tag].inspect)
+    else
+      @searched_spot = @spot
+    end
     # スポットの絞り込みがされていない場合、全てのスポットを対象に含める。
-    binding.pry
-    @searched_spot ||= @spot
     @hash = Gmaps4rails.build_markers(@searched_spot) do |spot, marker|
-      binding.pry
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow spot.spot_name
@@ -22,6 +24,8 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
+    @spot.spot_tag = @spot.spot_tag
+
     require 'exifr/jpeg'
     if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
       @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude

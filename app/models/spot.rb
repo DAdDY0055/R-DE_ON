@@ -14,9 +14,9 @@ class Spot < ApplicationRecord
   after_validation :reverse_geocode
 
   def self.search(search) #self.でクラスメソッドとしている
-    binding.pry
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      Spot.where(['spot_tag LIKE ?', "%#{search}%"])
+    tag = search.delete("[").delete("]")
+    if tag # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Spot.where('spot_tag like ?', "%#{tag}%")
     else
       Spot.all #全て表示。
     end
