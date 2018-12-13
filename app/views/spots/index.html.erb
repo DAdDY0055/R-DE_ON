@@ -7,7 +7,7 @@
   <div class="spot_field">
     <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
     <label>
-      <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
+      <%= form.radio_button :spot_tag, tag %>
       <%= tag %>
     </label>
     <% end %>  
