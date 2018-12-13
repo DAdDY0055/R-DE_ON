@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :spots do
     resources :comments
+    collection do
+      get :search
+    end
     member do
       get :likes
     end

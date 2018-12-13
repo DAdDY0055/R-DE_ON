@@ -3,16 +3,40 @@
 </div>
 <div id="map" style="width: 100％; height: 400px;"></div>
 
+<%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
+  <div class="spot_field">
+    <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+    <label>
+      <%= form.radio_button :spot_tag, tag %>
+      <%= tag %>
+    </label>
+    <% end %>  
+  </div>
+
+  <%= submit_tag "Search" %>
+
+<% end %>
+
 <div class="container">
   <ul class="row">
     <% @spot.each do |spot| %>
     <li class="col-md-4">
       <p><%= spot.spot_name %></p>
+
       <p><%= spot.address %></p>
+
       <p><%= spot.spot_infomation %></p>
+
       <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+
       <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+
       <p>投稿者：<%= spot.user.name %></p>
+
+      <% unless spot.spot_tag.nil? %>
+      <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+      <p><%= spot.spot_tag.gsub(/"/, '') %></p>
+      <% end %>
     </li>
     <% end %>
   </div>
