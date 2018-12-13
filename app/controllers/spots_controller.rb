@@ -3,7 +3,12 @@ class SpotsController < ApplicationController
 
   def index
     @spot = Spot.all
-    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
+    @searched_spot = Spot.search(params[:spot][:spot_tag])
+    # スポットの絞り込みがされていない場合、全てのスポットを対象に含める。
+    binding.pry
+    @searched_spot ||= @spot
+    @hash = Gmaps4rails.build_markers(@searched_spot) do |spot, marker|
+      binding.pry
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow spot.spot_name
@@ -61,6 +66,10 @@ class SpotsController < ApplicationController
     @spot.like += 1
     @spot.save
     redirect_to spot_path(@spot.id), notice:"いいねしました！"
+  end
+
+  def search
+
   end
 
   private

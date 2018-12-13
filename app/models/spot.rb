@@ -12,4 +12,13 @@ class Spot < ApplicationRecord
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
+
+  def self.search(search) #self.でクラスメソッドとしている
+    binding.pry
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Spot.where(['spot_tag LIKE ?', "%#{search}%"])
+    else
+      Spot.all #全て表示。
+    end
+  end
 end
