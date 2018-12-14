@@ -2,7 +2,7 @@
   "name": "RIDE_ON",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.1",
+    "bootstrap": ">=4.1.2"
     "jquery": "^3.3.1"
   }
 }
