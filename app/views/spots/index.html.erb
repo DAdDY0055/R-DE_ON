@@ -24,7 +24,7 @@
       <div class="col-md-8">
         <ul class="row_A">
         <ul>最新投稿</ul>
-        <% @spot.last(8).each do |spot| %>
+        <% @spot.order(created_at: "DESC").first(8).each do |spot| %>
           <p class="col-md-4"><%= spot.spot_name %></p>
     
           <p class="col-md-4"><%= spot.address %></p>
@@ -49,7 +49,7 @@
         <div class="topic">
           <ul class="row_B">
           <ul>いいねランキング</ul>
-          <% @spot.order(like: "DESC").last(4).each do |spot| %>
+          <% @spot.order(like: "DESC").first(4).each do |spot| %>
             <p class="col-md-12"><%= spot.spot_name %></p>
       
             <p class="col-md-12"><%= spot.address %></p>
