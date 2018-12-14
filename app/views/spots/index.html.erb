@@ -17,30 +17,62 @@
 
 <% end %>
 
-<div class="container">
-  <ul class="row">
-    <% @spot.each do |spot| %>
-    <li class="col-md-4">
-      <p><%= spot.spot_name %></p>
-
-      <p><%= spot.address %></p>
-
-      <p><%= spot.spot_infomation %></p>
-
-      <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
-
-      <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
-
-      <p>投稿者：<%= spot.user.name %></p>
-
-      <% unless spot.spot_tag.nil? %>
-      <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-      <p><%= spot.spot_tag.gsub(/"/, '') %></p>
-      <% end %>
-    </li>
-    <% end %>
+<article>
+  <div class="contents">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <ul class="row_A">
+        <ul>最新投稿</ul>
+        <% @spot.last(8).each do |spot| %>
+          <p class="col-md-4"><%= spot.spot_name %></p>
+    
+          <p class="col-md-4"><%= spot.address %></p>
+    
+          <p class="col-md-4"><%= spot.spot_infomation %></p>
+    
+          <p class="col-md-4"><%= image_tag spot.spot_photo.url %></p>
+    
+          <p class="col-md-4"><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+    
+          <p class="col-md-4">投稿者：<%= spot.user.name %></p>
+    
+          <% unless spot.spot_tag.nil? %>
+          <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+          <p class="col-md-12"><%= spot.spot_tag.gsub(/"/, '') %></p>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    
+      <div class="col-md-4">
+        <div class="topic">
+          <ul class="row_B">
+          <ul>いいねランキング</ul>
+          <% @spot.order(like: "DESC").last(4).each do |spot| %>
+            <p class="col-md-12"><%= spot.spot_name %></p>
+      
+            <p class="col-md-12"><%= spot.address %></p>
+      
+            <p class="col-md-12"><%= spot.spot_infomation %></p>
+      
+            <p class="col-md-12"><%= image_tag spot.spot_photo.url %></p>
+      
+            <p class="col-md-12"><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+      
+            <p class="col-md-12">投稿者：<%= spot.user.name %></p>
+      
+            <% unless spot.spot_tag.nil? %>
+            <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+            <li class="col-md-12"><%= spot.spot_tag.gsub(/"/, '') %></p>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</article>
 
 <script>
   handler = Gmaps.build('Google');
