@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_085513) do
+ActiveRecord::Schema.define(version: 2018_12_14_050944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_085513) do
     t.text "spot_infomation"
     t.string "spot_photo"
     t.text "comment"
-    t.integer "like"
+    t.integer "like", default: 0, null: false
     t.text "spot_tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
