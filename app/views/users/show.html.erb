@@ -12,9 +12,17 @@
 
 <h4><%= @user.name %>のお気に入り一覧</h4>
 
+<% @favorite_spot.each do |spot| %>
+  <p><%= spot.spot_name %></p>
+  <p><%= spot.address %></p>
+  <p><%= spot.spot_infomation %></p>
+  <p class="picture_content"><%= image_tag spot.spot_photo.url %></p>
+  <p><%= link_to '詳細を表示する', spot_path(spot.id) %></p>
+<% end %>
+
 <h4><%= @user.name %>の投稿一覧</h4>
 
-<% @spot.each do |spot| %>
+<% @user_spot.each do |spot| %>
   <p><%= spot.spot_name %></p>
   <p><%= spot.address %></p>
   <p><%= spot.spot_infomation %></p>
