@@ -122,8 +122,48 @@ img {
   border-bottom: 2px solid rgb(110, 169, 036);
 }
 
-.map h2 {
+h2 {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
 }
 /* 一覧表示ページ(index部分)終わり */
+
+
+/* 新規投稿ページ(new部分)始まり */
+.new_image img {
+  width: 50%;
+  display: block;
+  margin: auto;
+}
+
+#new h2 {
+  margin: 30px 50px 0px 50px;
+}
+
+.spot_form {
+  background-color: #ffffff;
+  margin:  0px 50px 30px 50px;
+  padding: 0px 30px 20px 30px;
+}
+
+.spot_form dl dt {
+  width: 165px;
+  padding: 10px 0;
+}
+
+.spot_form dl dd {
+  padding: 10px 0;
+}
+
+.new_form {
+  border: 1px solid;
+  width: 70%;
+}
+
+.new_text_area_form {
+  width: 70%;
+  height: 200px;
+}
+
+/* 新規投稿ページ(new部分)終わり */
+

@@ -1,33 +1,38 @@
-<%= form_with(model: @spot, local: true) do |form| %>
-  <div class="spot_field">
-    <%= form.label :スポット名 %>
-    <%= form.text_field :spot_name %>
-  </div>
+<h2>オススメのスポットを投稿しよう！</h2>
 
-  <div class="spot_field">
-    <%= form.label :住所 %>
-    <%= form.text_field :address %>
-  </div>
+<div class="new_image">
+  <%= image_tag("Bicycle_nature.jpg") %>
+</div>
 
-  <div class="spot_field">
-    <%= form.label :写真 %>
-    <%= form.file_field :spot_photo %>
-  </div>
 
-  <div class="spot_field">
-    <%= form.label :スポット詳細 %>
-    <%= form.text_field :spot_infomation %>
-  </div>
-
-  <div class="spot_field">
-    <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
-    <label>
-      <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
-      <%= tag %>
-    </label>
-    <% end %>  
-  </div>
-
-  <%= form.submit "登録する" %>
-<% end %>
+<section id="new">
+　<h2>スポットを登録する</h2>
+  <div class="spot_form">
+  <%= form_with(model: @spot, local: true) do |form| %>
+    <dl>
+      <dt><span class="required"><%= form.label :スポット名 %></span></dt>
+      <dd><%= form.text_field :spot_name, class: "new_form" %></dd>
+    
+      <dt><span class="either"><%= form.label :住所 %></span></dt>
+      <dd><%= form.text_field :address, class: "new_form" %></dd>
   
+      <dt><span class="either"><%= form.label :写真 %></span></dt>
+      <dd><%= form.file_field :spot_photo %></dd>
+  
+      <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
+      <dd><%= form.text_area :spot_infomation, class: "new_text_area_form" %></dd>
+  
+      <dt><%= form.label :スポット分類 %></dt>
+      <dd>
+      <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+        <label>
+          <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
+          <%= tag %>
+        </label>
+        <% end %>
+      </dd>  
+    <dl>
+      <%= form.submit "登録する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</section>
