@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #EEEEEE;
   color: #333333;
   font-size: 15px;
   line-height: 2;
@@ -29,6 +29,7 @@ a:hover {
 }
 
 header {
+  background-color: #ffffff;
   height: 100px;
   margin: 0 auto;
   border-bottom: solid rgb(110, 169, 036);
@@ -73,3 +74,47 @@ footer small {
   font-size: 12px;
 }
 
+.contents {
+  margin-top: 50px;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+.spots {
+  margin: 10px;
+}
+
+.spots h2 {
+  color: #ffffff;
+  background-color: rgb(110, 169, 036);
+}
+
+.content {
+  background-color: #ffffff;
+  font-size: 34px;
+  margin: 5px;
+}
+
+.content h3 {
+  color: #ffffff;
+  font-size: 40px;
+  background-color: #333333;
+  display: inline-block;
+  opacity: 0.8;
+  margin: 0px 0px 0px 10px;
+}
+
+.content img {
+  margin-top: -70px;
+}
+
+.content img:hover {
+  opacity: 0.8;
+}
+
+.content p {
+  border-bottom: 2px solid rgb(110, 169, 036);
+}
