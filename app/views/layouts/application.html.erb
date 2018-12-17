@@ -13,22 +13,43 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "新規投稿", new_spot_path %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>      
-    <% end %>
 
+    <!-- header始まり -->
+    <header>
+      <div class="logo">
+        <%= link_to "R!DE ON!", spots_path %>
+      </div>
+      <nav>
+        <% if user_signed_in? %>
+        <ul class="global-nav">
+          <li><%= link_to "新規投稿", new_spot_path %></li>
+          <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </nav>
+    </header>
+    <!-- header終わり -->
+
+    <!-- 通知始まり -->
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
+    <!-- 通知終わり -->
 
     <%= yield %>
+
+    <!-- footer始まり -->
+    <footer>
+      <small>(C)2018 R!DE ON!</small>
+    </footer>
+    <!-- footer終わり -->
+
   </body>
 </html>
