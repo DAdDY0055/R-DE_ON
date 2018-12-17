@@ -1,3 +1,4 @@
+/* 共通部分(body/header/footer)始まり */
 body {
   margin: 0;
   padding: 0;
@@ -73,8 +74,11 @@ footer {
 footer small {
   font-size: 12px;
 }
+/* 共通部分(body/header/footer)終わり */
 
-.contents {
+
+/* 一覧表示ページ(index部分)始まり */
+#index {
   width: 100%;
 }
 
@@ -122,3 +126,4 @@ img {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
 }
+/* 一覧表示ページ(index部分)終わり */
