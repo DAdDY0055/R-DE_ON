@@ -75,7 +75,6 @@ footer small {
 }
 
 .contents {
-  margin-top: 50px;
   width: 100%;
 }
 
@@ -84,7 +83,7 @@ img {
 }
 
 .spots {
-  margin: 10px;
+  margin: 50px 10px;
 }
 
 .spots h2 {
@@ -117,4 +116,9 @@ img {
 
 .content p {
   border-bottom: 2px solid rgb(110, 169, 036);
+}
+
+.map h2 {
+  color: #ffffff;
+  background-color: rgb(110, 169, 036);
 }

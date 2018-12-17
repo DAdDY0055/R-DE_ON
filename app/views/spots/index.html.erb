@@ -1,11 +1,12 @@
-<div class="alert alert-primary" role="alert">
-  <h3>Map</h3>
+<div class="map">
+  <h2>Map</h2>
 </div>
 <div id="map" style="width: 100％; height: 600px;"></div>
 
 <article id="map">
+スポット絞り込み：
 <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
-  <div class="spot_field">
+  <div class="spot_search">
     <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
     <label>
       <%= form.radio_button :spot_tag, tag %>
