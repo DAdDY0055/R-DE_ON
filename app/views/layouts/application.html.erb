@@ -20,8 +20,8 @@
         <%= link_to "R!DE ON!", spots_path %>
       </div>
       <nav>
-        <% if user_signed_in? %>
         <ul class="global-nav">
+        <% if user_signed_in? %>
           <li><%= link_to "新規投稿", new_spot_path %></li>
           <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
