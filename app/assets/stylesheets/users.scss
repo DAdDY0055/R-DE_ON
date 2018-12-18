@@ -15,17 +15,32 @@
 /* プロフィールページ(show部分)終わり */
 
 /* 新規ユーザ登録ページ(new部分)始まり */
-#new_user {
+#user {
   width: 80%;
   margin: 50px auto;
 }
 
-#new_user .form {
+#user .form {
   margin: 0px;
 }
 
-#new_user .new_image {
+#user .new_image {
   background-color: #ffffff;
   padding-bottom: 10px;
 }
 /* 新規ユーザ登録ページ(new部分)終わり */
+
+/* ユーザ情報修正ページ(edit部分)始まり */
+.unsubscribe {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px 100px 30px 100px;
+  margin: 0 100px 0 100px auto;
+}
+
+.unsubscribe .danger {
+  color: #FF0000;
+  font-weight: bolder;
+}
+
+/* ユーザ情報修正ページ(edit部分)終わり */
