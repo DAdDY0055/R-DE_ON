@@ -19,45 +19,51 @@
 </article>
 
 <article id="index">
-  <div class="contents">
-    <section class="spots clearfix">
-      <h2>最近の投稿</h2>
-      <% @spot.order(created_at: "DESC").first(4).each do |spot| %>
-      <div class="content">
-        <h3><%= spot.spot_name %></h3>
-        <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
-        <p>住所：<%= spot.address %></p>
-        <p>スポット情報：<%= spot.spot_infomation %></p>
-        <p>投稿者：<%= spot.user.name %></p>
-        <% unless spot.spot_tag.nil? %>
-          <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-          <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
-        <% end %>
-      </div>
-      <% end %>
-    </section>
+  <div class="container-fluid">
+    <div class="row">
+      <section class="spots col-md-7">
+        <h2>最近の投稿</h2>
+        <div class="row">
+          <% @spot.order(created_at: "DESC").first(4).each do |spot| %>
+          <div class="content col-md-4">
+            <h3><%= spot.spot_name %></h3>
+            <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
+            <p>住所：<%= spot.address %></p>
+            <p>スポット情報：<%= spot.spot_infomation %></p>
+            <p>投稿者：<%= spot.user.name %></p>
+            <% unless spot.spot_tag.nil? %>
+              <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+              <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </section>
 
-    <section class="spots clearfix">
-      <h2>いいねランキング Top3</h2>
-      <!-- ランキング用カウント変数を作成 -->
-      <% runking = 1 %>
-      <% @spot.order(like: "DESC").first(3).each do |spot| %>
-      <div class="content">
-        <h2>いいねランキング No.<%= runking %> [いいね数：<%= spot.like %>]</h2>
-        <h3><%= spot.spot_name %></h3>
-        <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
-        <p>住所：<%= spot.address %></p>
-        <p>スポット情報：<%= spot.spot_infomation %></p>
-        <p>投稿者：<%= spot.user.name %></p>
-        <% unless spot.spot_tag.nil? %>
-          <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-          <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
-        <% end %>
-      </div>
-      <!-- ランキング用カウントに+1 -->
-      <% runking += 1%>
-      <% end %>
-    </section>
+      <section class="spots col-md-4 clearfix">
+        <div>
+          <h2>いいねランキング Top3</h2>
+          <!-- ランキング用カウント変数を作成 -->
+          <% runking = 1 %>
+          <% @spot.order(like: "DESC").first(3).each do |spot| %>
+          <div class="content">
+            <h2>いいねランキング No.<%= runking %> [いいね数：<%= spot.like %>]</h2>
+            <h3><%= spot.spot_name %></h3>
+            <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
+            <p>住所：<%= spot.address %></p>
+            <p>スポット情報：<%= spot.spot_infomation %></p>
+            <p>投稿者：<%= spot.user.name %></p>
+            <% unless spot.spot_tag.nil? %>
+              <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+              <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+            <% end %>
+          </div>
+          <!-- ランキング用カウントに+1 -->
+          <% runking += 1%>
+          <% end %>
+        </div>
+      </section>
+    </div>
   </div>
 </article>
 
