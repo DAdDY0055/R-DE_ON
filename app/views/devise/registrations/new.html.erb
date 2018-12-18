@@ -2,38 +2,49 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  
+  <section id="new_user">
+    <h2>R!DO ON!へようこそ！</h2>
 
-  <div class="field">
-    <%= f.label :name %><bt />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <div class="new_image">
+      <%= image_tag("Bicycle_nature.jpg") %>
+    </div>
+
+    <h2>新規ユーザ登録</h2>
+
+    <div class="form">
+      <dl>
+        <dt><span class="required"><%= f.label :name %><bt /></dt>
+        <%= f.text_field :name, class: "new_form" , autofocus: true, autocomplete: "name" %></dd>
+      </dl>
+
+      <dl>
+        <dt><span class="required"><%= f.label :email %><br /></span></dt>
+        <dd><%= f.email_field :email, class: "new_form" , autofocus: true, autocomplete: "email" %></dd>
+      </dl>
+
+      <dl>
+        <dt><%= f.label :icon %><bt /></span></dt>
+        <dd><%= f.file_field :icon, autofocus: true, autocomplete: "icon" %></dd>
+      </dl>
+
+      <dl>
+        <dt><span class="required"><%= f.label :password %></span></dt>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br />
+        <dd><%= f.password_field :password, class: "new_form" , autocomplete: "new-password" %></dd>
+      </dl>
+
+      <dl>
+        <dt><span class="required"><%= f.label :password_confirmation %><br /></span></dt>
+        <dd><%= f.password_field :password_confirmation, class: "new_form" , autocomplete: "new-password" %></dd>
+      </dl>
+  
+    <div class="actions">
+      <%= f.submit "上記内容で新規登録する", class: "btn btn-primary"  %>
+    </div>
+  <% end %>
   </div>
+</section>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :icon %><bt />
-    <%= f.file_field :icon, autofocus: true, autocomplete: "icon" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "上記内容で新規登録する" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
