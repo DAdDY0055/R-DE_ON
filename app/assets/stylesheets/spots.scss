@@ -122,7 +122,6 @@ img {
 }
 
 h2 {
-  font-size: 5vw;
   color: #ffffff;
   background-color: rgb(110, 169, 036);
 }
@@ -138,6 +137,12 @@ h2 {
   background-color: rgb(110, 169, 036);
   margin-top: 10px;
   margin-bottom: 0;
+}
+
+@media screen and (max-width:600px) {
+  h2 {
+    font-size: 5vw;
+  }
 }
 /* 一覧表示ページ(index部分)終わり */
 
