@@ -1,52 +1,53 @@
 <h2>Map</h2>
-<div id="map" style="width: 100％; height: 600px;"></div>
+<div id="map" style="width: 100％; height: 300px;"></div>
 
 <article id="index">
-  <div class="contents">
-    <section class="spots clearfix">
-      <h2><%= @user.name %>のお気に入り一覧</h2>
-      <% @favorite_spot.each do |spot| %>
-      <div class="content">
-        <h3><%= spot.spot_name %></h3>
-        <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
-        <p>住所：<%= spot.address %></p>
-        <p>スポット情報：<%= spot.spot_infomation %></p>
-        <p>投稿者：<%= spot.user.name %></p>
-        <% unless spot.spot_tag.nil? %>
-          <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-          <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+  <div class="container">
+    <div class="row">
+      <section class="spots col-md-4">
+        <h2><%= @user.name %>のお気に入り</h2>
+        <% @favorite_spot.each do |spot| %>
+        <div class="content">
+          <h3><%= spot.spot_name %></h3>
+          <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
+          <p>住所：<%= spot.address %></p>
+          <p>スポット情報：<%= spot.spot_infomation %></p>
+          <p>投稿者：<%= spot.user.name %></p>
+          <% unless spot.spot_tag.nil? %>
+            <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+            <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+          <% end %>
+        </div>
         <% end %>
-      </div>
-      <% end %>
-    </section>
-
-    <section class="spots clearfix">
-      <h2><%= @user.name %>の投稿一覧</h2>
-      <% @user_spot.each do |spot| %>
-      <div class="content">
-        <h3><%= spot.spot_name %></h3>
-        <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
-        <p>住所：<%= spot.address %></p>
-        <p>スポット情報：<%= spot.spot_infomation %></p>
-        <p>投稿者：<%= spot.user.name %></p>
-        <% unless spot.spot_tag.nil? %>
-          <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-          <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+      </section>
+  
+      <section class="spots col-md-4">
+        <h2><%= @user.name %>の投稿</h2>
+        <% @user_spot.each do |spot| %>
+        <div class="content">
+          <h3><%= spot.spot_name %></h3>
+          <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
+          <p>住所：<%= spot.address %></p>
+          <p>スポット情報：<%= spot.spot_infomation %></p>
+          <p>投稿者：<%= spot.user.name %></p>
+          <% unless spot.spot_tag.nil? %>
+            <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+            <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
+          <% end %>
+        </div>
         <% end %>
-      </div>
-      <% end %>
-    </section>
-    
-    <section class="profile clearfix">
-      <h2>プロフィール</h2>
-      <div class="content">
-        <p class="profile_img"><%= image_tag @user.icon_url %></p>
-        <p>ユーザー名　  : <%= @user.name %></p>
-        <p>メールアドレス: <%= @user.email %></p>
-        <p><%= link_to 'ユーザ情報を変更する', edit_user_registration_path %></p>
-      </div>
-    </section>
-
+      </section>
+      
+      <section class="profile col-md-4">
+        <h2>プロフィール</h2>
+        <div class="content">
+          <p class="profile_img"><%= image_tag @user.icon_url %></p>
+          <p>ユーザー名　  : <%= @user.name %></p>
+          <p>メールアドレス: <%= @user.email %></p>
+          <p><%= link_to 'ユーザ情報を変更する', edit_user_registration_path %></p>
+        </div>
+      </section>
+    </div>
   </div>
 </article>
 

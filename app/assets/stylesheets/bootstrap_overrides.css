@@ -1,0 +1,20 @@
+.col-md-8 h2{
+  padding-right: 0;
+  margin-left: -13px;
+}
+
+.col-md-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-md-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (min-width:600px) {
+  .col-md-4 {
+    padding-left: 50px;
+  }
+}

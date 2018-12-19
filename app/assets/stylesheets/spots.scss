@@ -31,26 +31,25 @@ a:hover {
 
 header {
   background-color: #ffffff;
-  height: 100px;
+  height: 13vw;
   margin: 0 auto;
   border-bottom: solid rgb(110, 169, 036);
 }
 
 .logo {
   float: left;
-  font-size: 64px;
-  margin-top: -15px;
+  font-size: 7vw;
 }
 
 .global-nav {
   float: right;
-  margin-top: 25px;
+  margin-top: 4.5vw;
 }
 
 .global-nav li {
   float: left;
-  margin: 0 20px;
-  font-size: 34px;
+  margin: 0 10px;
+  font-size: 3.5vw;
   list-style: none;
 }
 
@@ -59,7 +58,7 @@ header {
 }
 
 .global-nav li a:hover {
-  border-bottom: 2px solid rgb(110, 169, 036);
+  border-bottom: 1px solid rgb(110, 169, 036);
   padding-bottom: 3px;
   text-decoration: none;
 }
@@ -87,31 +86,31 @@ img {
 }
 
 .spots {
-  margin: 50px 10px;
+  margin: 0px 0 10px 0;
 }
 
 .spots h2 {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
+  display: inline;
 }
 
 .content {
   background-color: #ffffff;
-  font-size: 34px;
-  margin: 10px 30px 60px 30px;
+  border: solid 2px #EEEEEE;
 }
 
 .content h3 {
   color: #ffffff;
-  font-size: 40px;
+  font-size: 20px;
   background-color: #333333;
   display: inline-block;
   opacity: 0.8;
-  margin: 0px 0px 0px 10px;
+  margin: 10px 0px 0px 5px;
 }
 
 .content img {
-  margin-top: -70px;
+  margin-top: -30px;
 }
 
 .content img:hover {
@@ -125,6 +124,25 @@ img {
 h2 {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.like_number {
+  color: #ffffff;
+  background-color: rgb(110, 169, 036);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width:600px) {
+  h2 {
+    font-size: 5vw;
+  }
 }
 /* 一覧表示ページ(index部分)終わり */
 
