@@ -1,29 +1,45 @@
-<%= form_with(model: @spot, local: true) do |form| %>
-  <div class="spot_field">
-    <%= form.label :スポット名 %>
-    <%= form.text_field :spot_name %>
-  </div>
+<h2>スポット情報変更</h2>
 
-
-  <div class="spot_field">
-    <%= form.label :住所 %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="spot_field">
+<section id="new">
+　<h2>スポット情報を変更する</h2>
+  <div class="form">
+  <%= form_with(model: @spot, local: true) do |form| %>
+    <dl>
+      <dt><span class="required"><%= form.label :スポット名 %></span></dt>
+      <dd><%= form.text_field :spot_name, class: "new_form" %></dd>
     
-    <%= form.label :現在の写真 %>
-    <%= image_tag @spot.spot_photo.url %>
-
-    <%= form.label :新しい写真 %>
-    <%= form.file_field :spot_photo %>
-  </div>
-
-  <div class="spot_field">
-    <%= form.label :スポット詳細 %>
-    <%= form.text_field :spot_infomation %>
-  </div>
-
-  <%= form.submit "登録する" %>
-<% end %>
+      <dt><span class="either"><%= form.label :住所 %></span></dt>
+      <dd><%= form.text_field :address, class: "new_form" %></dd>
   
+　    <dt><%= form.label :現在の写真 %></dt>
+      <dd><%= image_tag @spot.spot_photo.url %></dd>
+
+      <dt><span class="either"><%= form.label :新しい写真を選択 %></span></dt>
+      <dd><%= form.file_field :spot_photo %></dd>
+  
+      <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
+      <dd><%= form.text_area :spot_infomation, class: "new_text_area_form" %></dd>
+  
+      
+      <dt><strong>現在のスポット分類：</strong></dt>
+      <dd>
+      <% unless @spot.spot_tag.nil? %>
+        <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+        <%= @spot.spot_tag.gsub(/"/, '') %>
+      <% end %>
+      </dd>
+
+      <dt><%= form.label :スポット分類を再登録する %></dt>
+      <dd>
+      <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+        <label>
+          <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
+          <%= tag %>
+        </label>
+        <% end %>
+      </dd>  
+    <dl>
+      <%= form.submit "変更を保存する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</section>

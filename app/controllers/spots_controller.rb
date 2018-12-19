@@ -53,7 +53,12 @@ class SpotsController < ApplicationController
 
   def update
     @spot = Spot.find(params[:id])
+    
+    binding.pry
     if @spot.update(spot_params)
+      @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
+      @spot.save
+      binding.pry
       redirect_to spot_path(@spot.id), notice: "投稿を編集しました"
     else
       render 'edit'
