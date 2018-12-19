@@ -1,7 +1,7 @@
 <div class="map">
   <h2>Map</h2>
 </div>
-<div id="map" style="width: 100％; height: 600px;"></div>
+<div id="map" style="width: 100％; height: 300px;"></div>
 
 <article id="map">
 スポット絞り込み：
@@ -19,13 +19,13 @@
 </article>
 
 <article id="index">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <section class="spots col-md-7">
+      <section class="spots col-md-8">
         <h2>最近の投稿</h2>
         <div class="row">
           <% @spot.order(created_at: "DESC").first(4).each do |spot| %>
-          <div class="content col-md-4">
+          <div class="content col-md-6">
             <h3><%= spot.spot_name %></h3>
             <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
             <p>住所：<%= spot.address %></p>
@@ -40,7 +40,7 @@
         </div>
       </section>
 
-      <section class="spots col-md-4 clearfix">
+      <section class="spots col-md-4">
         <div>
           <h2>いいねランキング Top3</h2>
           <!-- ランキング用カウント変数を作成 -->
