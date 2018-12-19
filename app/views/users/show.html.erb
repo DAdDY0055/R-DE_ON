@@ -4,9 +4,10 @@
 <article id="index">
   <div class="container">
     <div class="row">
+  
       <section class="spots col-md-4">
-        <h2><%= @user.name %>のお気に入り</h2>
-        <% @favorite_spot.each do |spot| %>
+        <h2><%= @user.name %>の投稿</h2>
+        <% @user_spot.each do |spot| %>
         <div class="content">
           <h3><%= spot.spot_name %></h3>
           <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
@@ -20,10 +21,10 @@
         </div>
         <% end %>
       </section>
-  
+      
       <section class="spots col-md-4">
-        <h2><%= @user.name %>の投稿</h2>
-        <% @user_spot.each do |spot| %>
+        <h2><%= @user.name %>のお気に入り</h2>
+        <% @favorite_spot.each do |spot| %>
         <div class="content">
           <h3><%= spot.spot_name %></h3>
           <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
