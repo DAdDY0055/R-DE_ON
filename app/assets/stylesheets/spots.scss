@@ -86,12 +86,13 @@ img {
 }
 
 .spots {
-  margin: 10px 0 10px 0;
+  margin: 0px 0 10px 0;
 }
 
 .spots h2 {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
+  display: inline;
 }
 
 .content {
@@ -124,6 +125,19 @@ h2 {
   font-size: 5vw;
   color: #ffffff;
   background-color: rgb(110, 169, 036);
+}
+
+.cleardix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.like_number {
+  color: #ffffff;
+  background-color: rgb(110, 169, 036);
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 /* 一覧表示ページ(index部分)終わり */
 

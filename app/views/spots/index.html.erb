@@ -42,12 +42,12 @@
 
       <section class="spots col-md-4">
         <div>
-          <h2>いいねランキング Top3</h2>
+          <h2 class="cleardix">いいね Top3</h2>
           <!-- ランキング用カウント変数を作成 -->
           <% runking = 1 %>
           <% @spot.order(like: "DESC").first(3).each do |spot| %>
+            <p class="like_number">いいね数 No.<%= runking %> [いいね数：<%= spot.like %>]</p>
           <div class="content">
-            <h2>いいねランキング No.<%= runking %> [いいね数：<%= spot.like %>]</h2>
             <h3><%= spot.spot_name %></h3>
             <p><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></p>
             <p>住所：<%= spot.address %></p>
