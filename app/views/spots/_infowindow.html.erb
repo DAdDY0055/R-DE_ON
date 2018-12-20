@@ -1,0 +1,2 @@
+<%= link_to spot.spot_name, spot_path(spot.id) %>
+<%= link_to "GoogleMapで開く" ,"https://maps.google.co.jp/maps?q=loc:#{spot.latitude},#{spot.longitude}&iwloc=J",target: "_blank" %>

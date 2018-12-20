@@ -13,7 +13,7 @@ class SpotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@searched_spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
-      marker.infowindow spot.spot_name
+      marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
   end
 
