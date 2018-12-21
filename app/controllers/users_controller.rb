@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @favorite_spot = @user.favorites_spots
     @user_spot = @user.spots
     # プロフィール上のマップにはお気に入り + 自分の投稿を表示するよう、@hashに追加
