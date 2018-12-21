@@ -33,7 +33,7 @@ class SpotsController < ApplicationController
         @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
         @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
       end
-    rescue #jpegファイル以外だとエラーになるため、rescue
+    rescue #jpegファイル以外だとエラーになるため、rescueでキャッチ
     ensure #エラーでもそうでなくてもsave
       if @spot.save
         redirect_to spots_path, notice: '登録しました！'
