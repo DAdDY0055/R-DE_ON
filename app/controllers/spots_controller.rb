@@ -47,7 +47,10 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @tag  = Spot.find(params[:id]).spot_tag
-    @favorite = current_user.favorites.find_by(spot_id: @spot.id)
+    if current_user
+      binding.pry
+      @favorite = current_user.favorites.find_by(spot_id: @spot.id)
+    end
     @comments = @spot.comments
     @comment  = @spot.comments.build
   end

@@ -33,20 +33,21 @@
       <% end %>
     </p>
 
-    <% unless @spot.user_id == current_user.id %>
-      <% if @favorite.present? %>
-        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-      <% else %>
-        <%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post, class: 'btn btn-primary' %>
+    <!-- ログイン時のみ表示 -->
+    <% if current_user %>
+      <% unless @spot.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
       <% end %>
     <% end %>
-    
-    <% unless @spot.user_id == current_user.id %>
-      <div id="like-button">
-        <%= link_to "いいね！", likes_spot_path(@spot.id) %>
-        <%= @spot.like %>
-      </div>
-    <% end %>
+
+    <div id="like-button">
+      <%= link_to "いいね！", likes_spot_path(@spot.id) %>
+      <%= @spot.like %>
+    </div>
     
 　  <p><strong>コメント:</strong></p>
 
