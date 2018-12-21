@@ -27,16 +27,21 @@ class SpotsController < ApplicationController
     # タグ情報を保存する際、"["と"]"を削除した状態で保存する
     @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
 
-    require 'exifr/jpeg'
-    if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
-      @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
-      @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
-    end
-    if @spot.save
+    begin
+      require 'exifr/jpeg'
+      if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
+        @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
+        @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
+      end
+    rescue #jpegファイル以外だとエラーになるため、rescue
+    ensure #エラーでもそうでなくてもsave
+      if @spot.save
         redirect_to spots_path, notice: '登録しました！'
-    else
-      render 'new'
+      else
+        render 'new'
+      end
     end
+
   end
 
   def show
