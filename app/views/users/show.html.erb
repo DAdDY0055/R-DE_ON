@@ -42,7 +42,11 @@
       <section class="profile col-md-4">
         <h2>プロフィール</h2>
         <div class="content">
+        <% if @user.icon_url %>
           <p class="profile_img"><%= image_tag @user.icon_url %></p>
+        <% else %>
+          <p class="profile_img"><%= image_tag("No_image.png") %></p>
+        <% end %>
           <p>ユーザー名　  : <%= @user.name %></p>
           <p>メールアドレス: <%= @user.email %></p>
           <p><%= link_to 'ユーザ情報を変更する', edit_user_registration_path, class: "btn btn-primary" %></p>

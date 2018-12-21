@@ -5,9 +5,14 @@
   <section id="user">
     <h2>Welcome back!</h2>
 
+    <% if @user.icon_url %>
     <div class="new_image">
 　    <%= image_tag @user.icon_url %>
+    <% else %>
+      <p class="profile_img"><%= image_tag("No_image.png") %></p>
+    <% end %>
     </div>
+
 
     <div class="form">
       <dt><%= f.label :name %>を変更する<br />
