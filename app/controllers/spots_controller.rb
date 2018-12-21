@@ -54,6 +54,9 @@ class SpotsController < ApplicationController
 
   def edit
     @spot = Spot.find(params[:id])
+    unless @spot.user_id == current_user.id
+      redirect_to spot_path(@spot.id), notice: "自分の投稿以外は編集できません"
+    end
   end
 
   def update
@@ -70,8 +73,12 @@ class SpotsController < ApplicationController
 
   def destroy
     @spot = Spot.find(params[:id])
-    @spot.destroy
-    redirect_to spots_path, notice:"投稿を削除しました。"
+    unless @spot.user_id == current_user.id
+      redirect_to spot_path(@spot.id), notice: "自分の投稿以外は削除できません"
+    else
+      @spot.destroy
+      redirect_to spots_path, notice:"投稿を削除しました。"
+    end
   end
 
   def likes
