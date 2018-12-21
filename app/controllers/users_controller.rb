@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @hash = Gmaps4rails.build_markers(@favorite_spot + @user_spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
-      marker.infowindow spot.spot_name
+      marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
   end
 end
