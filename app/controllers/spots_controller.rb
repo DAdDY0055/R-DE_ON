@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @spot = Spot.all
@@ -48,7 +48,6 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @tag  = Spot.find(params[:id]).spot_tag
     if current_user
-      binding.pry
       @favorite = current_user.favorites.find_by(spot_id: @spot.id)
     end
     @comments = @spot.comments
