@@ -78,10 +78,6 @@ class SpotsController < ApplicationController
     redirect_to spot_path(@spot.id), notice:"いいねしました！"
   end
 
-  def search
-
-  end
-
   private
 
   def spot_params
