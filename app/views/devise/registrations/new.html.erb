@@ -19,7 +19,7 @@
       </dl>
 
       <dl>
-        <dt><span class="required"><%= f.label :email %><br /></span></dt>
+        <dt><span class="required"><%= f.label :email %></span></dt>
         <dd><%= f.email_field :email, class: "new_form" , autofocus: true, autocomplete: "email" %></dd>
       </dl>
 
@@ -37,9 +37,13 @@
       </dl>
 
       <dl>
-        <dt><span class="required"><%= f.label :password_confirmation %><br /></span></dt>
+        <dt><span class="required"><%= f.label :password_confirmation %></span></dt>
         <dd><%= f.password_field :password_confirmation, class: "new_form" , autocomplete: "new-password" %></dd>
       </dl>
+
+      <div class="attention">
+        <p>※「<span class="required"></span>」の付いている項目は必須項目です。</p>
+      </div>
   
     <div class="actions">
       <%= f.submit "上記内容で新規登録する", class: "btn btn-primary"  %>

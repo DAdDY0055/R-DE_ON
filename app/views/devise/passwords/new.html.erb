@@ -1,17 +1,22 @@
 <h2>パスワードを忘れた方はこちら</h2>
-<p>パスワードを忘れた方はリセット方法を送付しますので、以下に登録に利用したメールアドレスを入力してください</p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<section id="new">
+  <h2>パスワード再発行</h2>
+  
+  <div class="form">
+    <p>パスワードを忘れた方はリセット方法を送付しますので、以下に登録に利用したメールアドレスを入力してください</p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <dl>
+        <dt><span class="required"><%= f.label :email %></dt>
+        <dd><%= f.email_field :email, class: "new_form", autofocus: true, autocomplete: "email" %></dd>
+      <dl>
+      <div class="actions">
+        <%= f.submit "パスワードリセット方法を送る", class: "btn btn-primary" %>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "パスワードリセット方法を送る" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

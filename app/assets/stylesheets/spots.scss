@@ -179,7 +179,7 @@ h2 {
 }
 
 .form dl dt {
-  width: 165px;
+  width: 300px;
   padding: 10px 0;
 }
 
@@ -195,6 +195,16 @@ h2 {
 .new_text_area_form {
   width: 70%;
   height: 200px;
+}
+
+.form .required:after {
+  content: " * ";
+  color: #ff0000;
+}
+
+.form .either:after {
+  content: " ☆ ";
+  color: #0000FF;
 }
 
 /* 新規投稿ページ(new部分)終わり */

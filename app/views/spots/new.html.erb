@@ -13,7 +13,7 @@
       <dt><span class="required"><%= form.label :スポット名 %></span></dt>
       <dd><%= form.text_field :spot_name, class: "new_form" %></dd>
     
-      <dt><span class="either"><%= form.label :住所 %></span></dt>
+      <dt><span class="either"><%= form.label :住所 %></span></dt>※位置情報(EXIF情報)つきのjpeg画像をアップロードする場合は不要
       <dd><%= form.text_field :address, class: "new_form" %></dd>
   
       <dt><span class="either"><%= form.label :写真 %></span></dt>
@@ -32,6 +32,14 @@
         <% end %>
       </dd>  
     <dl>
+
+    <div class="attention">
+      <p>※「<span class="required"></span>」の付いている項目は必須項目です。<br>
+      ※「<span class="either"></span>」の付いている項目は、<br>
+        ①位置情報(EXIF情報)つきのjpeg画像<br>
+        ②(①がない場合は)住所   のどちらかが必須になります。</p>
+    </div>
+
       <%= form.submit "登録する", class: "btn btn-primary" %>
     <% end %>
   </div>
