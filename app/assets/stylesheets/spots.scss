@@ -38,18 +38,18 @@ header {
 
 .logo {
   float: left;
-  font-size: 5vw;
+  font-size: 6vw;
 }
 
 .global-nav {
   float: right;
-  margin-top: 3vw;
+  margin-top: 1.5vw;
 }
 
 .global-nav li {
   float: left;
   margin: 10px;
-  font-size: 2vw;
+  font-size: 3vw;
   list-style: none;
 }
 
@@ -141,7 +141,7 @@ h2 {
 
 @media screen and (max-width:600px) {
   h2 {
-    font-size: 5vw;
+    font-size: 25px;
   }
 }
 
