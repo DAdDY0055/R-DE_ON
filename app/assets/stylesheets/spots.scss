@@ -31,25 +31,25 @@ a:hover {
 
 header {
   background-color: #ffffff;
-  height: 10vw;
+  height: 60px;
   margin: 0 auto;
   border-bottom: solid rgb(110, 169, 036);
 }
 
 .logo {
   float: left;
-  font-size: 6vw;
+  font-size: 30px;
+  margin-bottom: 0;
 }
 
 .global-nav {
   float: right;
-  margin-top: 1.5vw;
 }
 
 .global-nav li {
   float: left;
-  margin: 10px;
-  font-size: 3vw;
+  margin: 20px 5px 0 5px;
+  font-size: 15px;
   list-style: none;
 }
 
