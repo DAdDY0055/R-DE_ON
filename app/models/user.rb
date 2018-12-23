@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :email, :name, presence: true
   mount_uploader :icon, ImageUploader
 
   has_many :spots
