@@ -61,7 +61,7 @@
       <% if current_user %>
         <% if @spot.user_id == current_user.id %>
           <%= link_to "投稿を編集する", edit_spot_path(@spot.id), class: "btn btn-primary" %>
-          <%= link_to "投稿を削除する", spot_path(@spot.id), method: :delete, date: { confirm: "一度削除すると元には戻せません。本当に削除してもいいですか？" }, class: "btn btn-danger" %>
+          <%= link_to "投稿を削除する", spot_path(@spot.id), method: :delete, data: { confirm: "一度削除すると元には戻せません。本当に削除してもいいですか？" }, class: "btn btn-danger" %>
         </div>
       <% end %>
     <% end %>
