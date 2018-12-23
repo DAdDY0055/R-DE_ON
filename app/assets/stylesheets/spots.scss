@@ -232,4 +232,13 @@ h2 {
 .btn {
   margin: 10px;
 }
+
+
+@media screen and (min-width:600px) {
+  .picture_content img {
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+}
 /* 一覧表示ページ(show部分)終わり */
