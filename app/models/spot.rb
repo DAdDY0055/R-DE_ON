@@ -1,4 +1,5 @@
 class Spot < ApplicationRecord
+  validates :spot_name, :spot_infomation, presence: true
   mount_uploader :spot_photo, ImageUploader
 
   belongs_to :user

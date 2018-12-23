@@ -1,16 +1,13 @@
 ja:
   activerecord:
     models:
-      blog: "ブログ"
+      spot: "スポット"
       user: "ユーザー"
     attributes:
-      blog:
-        title: "タイトル"
-        content: "内容"
-      contact:
-        name: "名前"
-        email: "メールアドレス"
-        content: "内容"
+      spot:
+        address: "住所"
+        spot_name: "スポット名"
+        spot_infomation: "スポット詳細"
       user:
         title: "タイトル"
         name: "名前"
