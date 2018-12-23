@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
   def create
     @spot = Spot.find(params[:spot_id])
     @comment = @spot.comments.build(comment_params)
