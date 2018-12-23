@@ -33,14 +33,22 @@
       </dd>  
     <dl>
 
-    <div class="attention">
-      <p>※「<span class="required"></span>」の付いている項目は必須項目です。<br>
-      ※「<span class="either"></span>」の付いている項目は、<br>
-        ①位置情報(EXIF情報)つきのjpeg画像<br>
-        ②(①がない場合は)住所   のどちらかが必須になります。</p>
-    </div>
-
       <%= form.submit "登録する", class: "btn btn-primary" %>
+
     <% end %>
+  </div>
+</section>
+
+<section id="new">
+  <h2>使い方</h2>
+  <div class="form">
+    <p>①オススメのスポットの名称・住所・写真・おすすめポイントなどなどを共有してください！<br>
+       ②「<span class="required"></span>」の付いている項目は<strong>必須項目</strong>です。<br>
+       ③スポットの場所は、<br>
+      　 ・位置情報(EXIF情報)つきのjpeg画像を投稿<br>
+          もしくは、<br>
+      　 ・住所を入力する<br>
+       ことで自動でマップに表示することができます<br>
+        (「<span class="either"></span>」の付いている項目のどちらかが必須)</p>
   </div>
 </section>
