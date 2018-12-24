@@ -153,6 +153,38 @@ h2 {
   }
 }
 
+#page_top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: rgb(110, 169, 036);
+  opacity: 0.6;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  border: solid 1px #ffffff;
+}
+#page_top a::before{
+  font-family: FontAwesome;
+  content: '\f102';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
 /* 一覧表示ページ(index部分)終わり */
 
 /* GoogleMap marker(spot#index/user#show共通)始まり */
