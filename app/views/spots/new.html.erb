@@ -29,7 +29,7 @@
       <dt><span class="either"><%= form.label :住所 %></span></dt>※位置情報(EXIF情報)つきのjpeg画像をアップロードする場合は不要
       <dd><%= form.text_field :address, class: "new_form" %></dd>
   
-      <dt><span class="either"><%= form.label :写真 %></span></dt>
+      <dt><span class="required"><%= form.label :写真 %></span></dt>
       <dd><%= form.file_field :spot_photo %></dd>
   
       <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
@@ -62,6 +62,8 @@
           もしくは、<br>
       　 ・住所を入力する<br>
        ことで自動でマップに表示することができます<br>
-        (「<span class="either"></span>」の付いている項目のどちらかが必須)<br></p>
+        (「<span class="either"></span>」の付いている項目)<br>
+        ※スマホで撮影した画像を投稿し位置が自動取得されない場合は、<br>
+        編集で住所を手入力してください。</p>
   </div>
 </section>

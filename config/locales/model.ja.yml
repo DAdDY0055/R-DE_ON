@@ -8,6 +8,7 @@ ja:
         address: "住所"
         spot_name: "スポット名"
         spot_infomation: "スポット詳細"
+        spot_photo: "写真"
       user:
         title: "タイトル"
         name: "名前"
