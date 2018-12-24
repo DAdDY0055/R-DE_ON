@@ -17,7 +17,7 @@
 
 /* 新規ユーザ登録ページ(new部分)始まり */
 #user {
-  width: 80%;
+  width: 90%;
   margin: 50px auto;
 }
 
@@ -41,8 +41,16 @@
   font-weight: bolder;
 }
 
-#user_icon {
-  width: 160px;
+@media screen and (max-width:600px) {
+  #user_icon {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width:560px) {
+  #user_icon {
+    width: 280px;
+  }
 }
 
 /* ユーザ情報修正ページ(edit部分)終わり */

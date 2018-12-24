@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <section id="user">
-    <h2>Welcome back!</h2>
+    <h2>ユーザ情報を変更する</h2>
 
     <% if @user.icon_url %>
     <div class="new_image">

@@ -30,6 +30,7 @@
       <dd><%= form.text_field :address, class: "new_form" %></dd>
   
       <dt><span class="required"><%= form.label :写真 %></span></dt>
+      <div class="imagePreview"></div>
       <dd><%= form.file_field :spot_photo %></dd>
   
       <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
@@ -67,3 +68,14 @@
         編集で住所を手入力してください。</p>
   </div>
 </section>
+
+<script>
+  .imagePreview {
+    width: 100%;
+    height: 180px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+  }
+</script>
