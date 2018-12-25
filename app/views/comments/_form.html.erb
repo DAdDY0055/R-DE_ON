@@ -15,6 +15,9 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "コメントを投稿する", class: "btn btn-success" %><a>※コメントはログインしているユーザのみ可能です</a>
+  <% if current_user %>
+    <%= form.submit "コメントを投稿する", class: "btn btn-success" %>
+  <% end %>
+  <a>※コメントはログインしているユーザのみ可能です</a>
   </div>
 <% end %>
