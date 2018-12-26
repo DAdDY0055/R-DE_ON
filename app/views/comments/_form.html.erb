@@ -10,14 +10,15 @@
     </div>
   <% end %>
 
+  <% if current_user %>
   <div class="field">
     <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメント" %>
   </div>
-
   <div class="actions">
-  <% if current_user %>
     <%= form.submit "コメントを投稿する", class: "btn btn-success" %>
+  <% else %>
+    <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメントはログインしているユーザのみ可能です", readonly: "true" %>
+    <br>
   <% end %>
-  <a>※コメントはログインしているユーザのみ可能です</a>
   </div>
 <% end %>
