@@ -22,8 +22,7 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(spot_params)
-    @spot.user_id = current_user.id
+    @spot = current_user.spots.build(spot_params)
     # タグ情報を保存する際、"["と"]"を削除した状態で保存する(タグなしの場合、実行しない)
     if @spot.spot_tag
       @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
