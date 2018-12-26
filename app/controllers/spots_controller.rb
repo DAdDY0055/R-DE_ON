@@ -40,7 +40,7 @@ class SpotsController < ApplicationController
       if @spot.save
         redirect_to spots_path, notice: '登録しました！'
       else
-        render 'new'
+        render :new
       end
     end
 
@@ -73,7 +73,7 @@ class SpotsController < ApplicationController
       end
       redirect_to spot_path(@spot.id), notice: "投稿を編集しました"
     else
-      render 'edit'
+      render :edit
     end
   end
 
