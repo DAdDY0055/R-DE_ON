@@ -32,10 +32,14 @@
       <dd>
       <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
         <label>
-          <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
-          <%= tag %>
+          <% if @spot.spot_tag.gsub(/"/, '').include?(tag) %>
+            <%= form.check_box :spot_tag, { multiple: true, checked: true }, tag, nil %>
+          <% else %>
+            <%= form.check_box :spot_tag, { multiple: true }, tag, nil %>
+          <% end %>
+            <%= tag %>
         </label>
-        <% end %>
+      <% end %>
       </dd>  
     <dl>
       <%= form.submit "変更を保存する", class: "btn btn-primary" %>
