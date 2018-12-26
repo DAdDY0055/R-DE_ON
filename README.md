@@ -43,6 +43,7 @@ Rails 5.2.1
 | --- | --- |
 |carrierwave|画像アップロード|
 |mini_magick|画像アップロード|
+|rmagick|画像アップロード・変換|
 |devise|認証機能作成|
 |geocoder|経度・緯度及び、住所取得|
 |exifr|画像からのEXIF情報取得|

@@ -29,19 +29,15 @@ class SpotsController < ApplicationController
       @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
     end
 
-    begin
-      require 'exifr/jpeg'
-      if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
-        @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
-        @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
-      end
-    rescue #jpegファイル以外だとエラーになるため、rescueでキャッチ
-    ensure #エラーでもそうでなくてもsave
-      if @spot.save
-        redirect_to spots_path, notice: '登録しました！'
-      else
-        render :new
-      end
+    require 'exifr/jpeg'
+    if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
+      @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
+      @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
+    end
+    if @spot.save
+      redirect_to spots_path, notice: '登録しました！'
+    else
+      render :new
     end
 
   end
