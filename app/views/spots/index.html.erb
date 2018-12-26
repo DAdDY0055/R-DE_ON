@@ -3,18 +3,24 @@
 <div class="marker" id="map" style="width: 100％; height: 400px;"></div>
 
 <article id="map">
-スポット絞り込み：
-<%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
-  <div class="spot_search">
-    <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
-    <label>
-      <%= form.radio_button :spot_tag, tag %>
-      <%= tag %>
-    </label>
-    <% end %>
-    <%= submit_tag "Search", class: "btn btn-success" %>
-  </div>
-<% end %>
+
+<div class="spot_search">
+  <a>スポット絞り込み：</a>
+  <% if @spot_tag %>
+    <%= @spot_tag %>
+  <% end %>
+
+  <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
+  
+      <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+      <label>
+        <%= form.radio_button :spot_tag, tag %>
+        <%= tag %>
+      </label>
+      <% end %>
+      <%= submit_tag "Search", class: "btn btn-success" %>
+    </div>
+  <% end %>
 </article>
 
 <p><%= link_to "R!DE ON!について", about_index_path, class: "btn btn-info" %><p>

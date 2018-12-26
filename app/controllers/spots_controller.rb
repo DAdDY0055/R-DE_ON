@@ -5,7 +5,8 @@ class SpotsController < ApplicationController
     @spot = Spot.all
     # タグの絞り込みを行わなかった際、全てのスポットをマップに表示
     if params[:spot].present?
-      @searched_spot = Spot&.search(params[:spot][:spot_tag].inspect)
+      @spot_tag = params[:spot][:spot_tag].inspect
+      @searched_spot = Spot&.search(@spot_tag)
     else
       @searched_spot = @spot
     end
