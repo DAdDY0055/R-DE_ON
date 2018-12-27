@@ -1,14 +1,16 @@
 <h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <section id="user">
+  <section id="welcome">
     <h2>Welcome back!</h2>
 
     <div class="new_image">
-      <%= image_tag("Load_ac.jpg") %>
+      <%= image_tag("Load_ac.jpg") %><br>
     </div>
+  </section>
 
-    <h2>以下にユーザ情報を入力してください</h2>
+  <section id="welcome">
+    <h2>ユーザ情報を入力してください</h2>
 
     <div class="form">
       <dl>

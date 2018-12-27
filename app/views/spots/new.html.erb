@@ -20,7 +20,7 @@
 
 <section id="new">
 　<h2>スポットを登録する</h2>
-  <div class="form">
+  <div class="spot_form" >
   <%= form_with(model: @spot, local: true) do |form| %>
     <dl>
       <dt><span class="required"><%= form.label :スポット名 %></span></dt>
@@ -55,7 +55,7 @@
 
 <section id="new">
   <h2>使い方</h2>
-  <div class="form">
+  <div class="spot_form">
     <p>①オススメのスポットの名称・住所・写真・おすすめポイントなどなどを共有してください！<br>
        ②「<span class="required"></span>」の付いている項目は<strong>必須項目</strong>です。<br>
        ③スポットの場所は、<br>

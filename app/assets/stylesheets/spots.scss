@@ -100,11 +100,11 @@ img {
   width: 100%;
 }
 
-.spots {
+.spot_form {
   margin: 0px 0 10px 0;
 }
 
-.spots h2 {
+.spot_form h2 {
   color: #ffffff;
   background-color: rgb(110, 169, 036);
   display: inline;
@@ -226,37 +226,40 @@ h2 {
   margin: 30px 10px 0px 10px;
 }
 
-.form {
+.spot_form {
   background-color: #ffffff;
   margin:  0px 10px 30px 10px;
   padding: 0px 10px 20px 10px;
 }
 
-.form dl dt {
-  width: 300px;
+.spot_form dl {
+  margin: 0 auto;
+}
+
+.spot_form dl dt {
   padding: 10px 0;
 }
 
-.form dl dd {
+.spot_form dl dd {
   padding: 10px 0;
 }
 
 .new_form {
   border: 1px solid;
-  width: 70%;
+  width: 280px;
 }
 
 .new_text_area_form {
-  width: 70%;
+  width:  280px;
   height: 200px;
 }
 
-.form .required:after {
+.spot_form .required:after {
   content: " * ";
   color: #ff0000;
 }
 
-.form .either:after {
+.spot_form .either:after {
   content: " ☆ ";
   color: #0000FF;
 }
@@ -276,10 +279,26 @@ h2 {
     width: 280px;
   }
 }
+
+@media screen and (min-width:560px) {
+  #new h2 {
+    width: 500px;
+    display: block;
+    margin: auto;
+  }
+
+  #spot .spot_form dl {
+    width: initial;
+  }
+
+  .spot_form {
+    display: block;
+    margin: auto;
+  }
+}
 /* 新規投稿ページ(new部分)終わり */
 
 /* 一覧表示ページ(show部分)終わり */
-
 #detail img {
   margin-top: 0;
 }

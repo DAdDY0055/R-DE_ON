@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-  <section id="user">
+  <section id="welcome">
     <h2>ユーザ情報を変更する</h2>
 
     <% if @user.icon_url %>
@@ -54,10 +54,14 @@
     <div class="form">
       <%= f.submit "ユーザー情報を編集する", class: "btn btn-primary" %>
     </div>
+
+    <div class="form">
+      <%= link_to "戻る", :back, class: "btn btn-info" %>
+    </div>
   </section>
 <% end %>
 
-<section id="user">
+<section id="welcome">
   <div class="form unsubscribe">
     <h3>アカウントを削除する</h3>
     <p>アカウントを削除する際は以下のボタンを押してください<br><span class="danger">(一度削除すると元には戻せません)</span> <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しても良いですか？" }, method: :delete, class: "btn btn-danger" %></p>
@@ -65,5 +69,4 @@
 </section>
 
 <section id="user">
-  <%= link_to "戻る", :back, class: "btn btn-primary" %>
 </section>

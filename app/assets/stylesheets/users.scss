@@ -13,9 +13,47 @@
 /* プロフィールページ(show部分)終わり */
 
 /* 新規ユーザ登録ページ(new部分)始まり */
-#user {
-  width: 90%;
-  margin: 50px auto;
+#user .section {
+  display: block;
+  margin: auto;
+}
+
+.form {
+  background-color: #ffffff;
+  margin:  0px 10px 30px 10px;
+  padding: 0px 10px 20px 10px;
+}
+
+.form dl {
+  margin: 0 auto;
+}
+
+.form dl dt {
+  padding: 10px 0;
+}
+
+.form dl dd {
+  padding: 10px 0;
+}
+
+.new_form {
+  border: 1px solid;
+  width: 280px;
+}
+
+.new_text_area_form {
+  width:  280px;
+  height: 200px;
+}
+
+.form .required:after {
+  content: " * ";
+  color: #ff0000;
+}
+
+.form .either:after {
+  content: " ☆ ";
+  color: #0000FF;
 }
 
 #user .form {
@@ -25,6 +63,50 @@
 #user .new_image {
   background-color: #ffffff;
   padding-bottom: 10px;
+}
+
+#welcome {
+  background-color: #ffffff;
+}
+
+@media screen and (min-width:560px) {
+  #new h2 {
+    width: 500px;
+    display: block;
+    margin: auto;
+  }
+
+  #user .new_image {
+    width: 500px;
+  }
+
+  #welcome {
+    width: 500px;
+    display: block;
+    margin: auto;
+  }
+
+  #welcome .new_image {
+    margin-bottom: 10px;
+  }
+
+  #welcome .form {
+    width: 300px;
+    margin-left: 100px;
+  }
+
+  #new {
+    width: 500px;
+    display: block;
+    margin: auto;
+  }
+
+  #new .form {
+    width: 300px;
+    margin-left: 100px;
+    display: block;
+    margin: auto;
+  }
 }
 /* 新規ユーザ登録ページ(new部分)終わり */
 

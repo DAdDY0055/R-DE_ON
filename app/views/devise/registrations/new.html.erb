@@ -3,9 +3,8 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
-  <section id="user">
+  <section id="welcome">
     <h2>R!DO ON!へようこそ！</h2>
-
     <div class="new_image">
       <%= image_tag("Bicycle_nature.jpg") %>
       <p><br>R!DE ONは自転車を楽しむ人のために、<br>
@@ -14,9 +13,10 @@
          便利な休憩スポットなどをぜひ共有してみてください。</p>
       <p><%= link_to "R!DE ON!について", about_index_path, class: "btn btn-info" %><p>
     </div>
+  </section>
 
+  <section id="welcome">
     <h2>新規ユーザ登録</h2>
-
     <div class="form">
       <dl>
         <dt><span class="required"><%= f.label :name %><bt /></dt>
