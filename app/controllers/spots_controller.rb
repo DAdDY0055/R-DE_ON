@@ -4,8 +4,8 @@ class SpotsController < ApplicationController
   def index
     # タグの絞り込み確認。絞り込みがある場合、対象のみインスタンス変数に格納。
     if params[:spot].present?
-      tag = params[:spot][:spot_tag].inspect
-      @spot = Spot.tag_search(tag)
+      @tag = params[:spot][:spot_tag].inspect
+      @spot = Spot.tag_search(@tag)
     else
       # タグの絞り込みがない場合、全てのスポットをインスタンス変数に格納。
       @spot = Spot.all

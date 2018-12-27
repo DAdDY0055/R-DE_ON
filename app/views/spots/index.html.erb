@@ -6,8 +6,8 @@
 
 <div class="spot_search">
   <a>スポット絞り込み：</a>
-  <% if @spot_tag %>
-    <%= @spot_tag %>
+  <% if @tag %>
+    <%= @tag %>
   <% end %>
 
   <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
