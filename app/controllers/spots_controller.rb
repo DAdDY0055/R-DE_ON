@@ -2,16 +2,15 @@ class SpotsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @spot = Spot.all
-    # タグの絞り込みを行わなかった際、全てのスポットをマップに表示
+    # タグの絞り込み確認。絞り込みがある場合、対象のみインスタンス変数に格納。
     if params[:spot].present?
-      @spot_tag = params[:spot][:spot_tag].inspect
-      @searched_spot = Spot&.search(@spot_tag)
+      tag = params[:spot][:spot_tag].inspect
+      @spot = Spot.tag_search(tag)
     else
-      @searched_spot = @spot
+      # タグの絞り込みがない場合、全てのスポットをインスタンス変数に格納。
+      @spot = Spot.all
     end
-    # スポットの絞り込みがされていない場合、全てのスポットを対象に含める。
-    @hash = Gmaps4rails.build_markers(@searched_spot) do |spot, marker|
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
@@ -26,7 +25,7 @@ class SpotsController < ApplicationController
     @spot = current_user.spots.build(spot_params)
     # タグ情報を保存する際、"["と"]"を削除した状態で保存する(タグなしの場合、実行しない)
     if @spot.spot_tag
-      @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
+      @spot.spot_tag = @spot.spot_tag.square_brackets_del
     end
 
     require 'exifr/jpeg'
@@ -39,7 +38,6 @@ class SpotsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
@@ -64,7 +62,7 @@ class SpotsController < ApplicationController
     
     if @spot.update(spot_params)
       if @spot.spot_tag
-        @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
+        @spot.spot_tag = @spot.spot_tag.square_brackets_del
         @spot.save
       end
       redirect_to spot_path(@spot.id), notice: "投稿を編集しました"
