@@ -25,7 +25,7 @@ class SpotsController < ApplicationController
     @spot = current_user.spots.build(spot_params)
     # タグ情報を保存する際、"["と"]"を削除した状態で保存する(タグなしの場合、実行しない)
     if @spot.spot_tag
-      @spot.spot_tag = @spot.spot_tag.square_brackets_del
+      @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
     end
 
     require 'exifr/jpeg'
@@ -62,7 +62,7 @@ class SpotsController < ApplicationController
     
     if @spot.update(spot_params)
       if @spot.spot_tag
-        @spot.spot_tag = @spot.spot_tag.square_brackets_del
+        @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
         @spot.save
       end
       redirect_to spot_path(@spot.id), notice: "投稿を編集しました"

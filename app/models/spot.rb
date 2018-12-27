@@ -13,6 +13,5 @@ class Spot < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
-  scope :square_brackets_del, -> { delete("[").delete("]") }
   scope :tag_search, -> (tag) { where('spot_tag like ?', "%#{tag}%") }
 end
