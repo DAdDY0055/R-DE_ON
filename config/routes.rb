@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   resources :spots do
     resources :comments
-    member do
-      get :likes
-    end
+      get :likes, on: :member
   end
     
   resources :users, only: [:show]
