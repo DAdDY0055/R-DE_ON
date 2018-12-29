@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :likes]
 
   def index
     # タグの絞り込み確認。絞り込みがある場合、対象のみインスタンス変数に格納。
