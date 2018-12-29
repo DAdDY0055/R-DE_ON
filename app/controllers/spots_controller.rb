@@ -24,9 +24,7 @@ class SpotsController < ApplicationController
   def create
     @spot = current_user.spots.build(spot_params)
     # タグ情報を保存する際、"["と"]"を削除した状態で保存する(タグなしの場合、実行しない)
-    if @spot.spot_tag
-      @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
-    end
+    @spot.spot_tag = @spot.spot_tag.delete("[").delete("]") if @spot.spot_tag
 
     require 'exifr/jpeg'
     if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
@@ -43,9 +41,8 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @tag  = Spot.find(params[:id]).spot_tag
-    if current_user
-      @favorite = current_user.favorites.find_by(spot_id: @spot.id)
-    end
+    @favorite = current_user.favorites.find_by(spot_id: @spot.id) if current_user
+
     @comments = @spot.comments
     @comment  = @spot.comments.build
   end

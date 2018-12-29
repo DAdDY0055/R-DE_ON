@@ -21,12 +21,7 @@
       <dd><%= form.text_area :spot_infomation, class: "new_text_area_form" %></dd>
       
       <dt><strong>現在のスポット分類：</strong></dt>
-      <dd>
-      <% unless @spot.spot_tag.nil? %>
-        <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-        <%= @spot.spot_tag.gsub(/"/, '') %>
-      <% end %>
-      </dd>
+      <dd><%= @spot.spot_tag.gsub(/"/, '') if @spot.spot_tag %></dd> <!-- 配列として格納されているspot_tagの"を削除して表示 -->
 
       <dt><%= form.label :スポット分類を再登録する %></dt>
       <dd>

@@ -26,10 +26,8 @@
     
     <p>
       <strong>スポットタグ：</strong>
-      <% unless @spot.spot_tag.nil? %>
       <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-        <%= @spot.spot_tag.gsub(/"/, '') %>
-      <% end %>
+      <%= @spot.spot_tag.gsub(/"/, '') if @spot.spot_tag %>
     </p>
 
     <!-- ログイン時のみ表示 -->

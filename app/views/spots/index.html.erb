@@ -5,10 +5,7 @@
 <article id="map">
 
 <div class="spot_search">
-  <a>スポット絞り込み：</a>
-  <% if @tag %>
-    <%= @tag %>
-  <% end %>
+  <a>スポット絞り込み：<%= @tag if @tag %></a>
 
   <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
   
@@ -38,10 +35,8 @@
             <p>住所：<%= spot.address %></p>
             <p>スポット情報：<%= spot.spot_infomation %></p>
             <p>投稿者：<%= spot.user.name %></p>
-            <% unless spot.spot_tag.nil? %>
-              <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-              <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
-            <% end %>
+            <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+            <p>タグ：<%= spot.spot_tag.gsub(/"/, '') if spot.spot_tag %></p>
           </div>
           <% end %>
         </div>
@@ -60,10 +55,8 @@
             <p>住所：<%= spot.address %></p>
             <p>スポット情報：<%= spot.spot_infomation %></p>
             <p>投稿者：<%= spot.user.name %></p>
-            <% unless spot.spot_tag.nil? %>
-              <!-- 配列として格納されているspot_tagの"を削除して表示 -->
-              <p>タグ：<%= spot.spot_tag.gsub(/"/, '') %></p>
-            <% end %>
+            <!-- 配列として格納されているspot_tagの"を削除して表示 -->
+            <p>タグ：<%= spot.spot_tag.gsub(/"/, '') if spot.spot_tag %></p>
           </div>
           <!-- ランキング用カウントに+1 -->
           <% runking += 1%>

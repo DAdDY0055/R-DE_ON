@@ -5,7 +5,6 @@
     <div id="error_explanation">
       <h2 class="alert alert-danger"><%= @spot.errors.count %>件のエラーがあります。</h2>
       <ul>
-
       <% @spot.errors.full_messages.each do |msg| %>
         <li class="alert alert-danger"><%= msg %></li>
       <% end %>
@@ -46,10 +45,8 @@
         <% end %>
       </dd>  
     <dl>
-
-      <%= form.submit "登録する", class: "btn btn-primary" %>
-
-    <% end %>
+    <%= form.submit "登録する", class: "btn btn-primary" %>
+  <% end %>
   </div>
 </section>
 

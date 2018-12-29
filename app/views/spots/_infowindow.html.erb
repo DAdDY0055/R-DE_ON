@@ -1,7 +1,5 @@
 <ul class="spot_marker">
   <li><h4><%= link_to spot.spot_name, spot_path(spot.id) %></h4></li>
-  <% if spot.spot_photo.url %>
-    <li><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) %></li>
-  <% end %>
+  <li><%= link_to image_tag(spot.spot_photo.url), spot_path(spot.id) if spot.spot_photo.url %></li>
   <li><%= link_to "GoogleMapで開く" ,"https://maps.google.co.jp/maps?q=loc:#{spot.latitude},#{spot.longitude}&iwloc=J",target: "_blank" %></li>
 </ul>
