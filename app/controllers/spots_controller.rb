@@ -56,7 +56,6 @@ class SpotsController < ApplicationController
 
   def update
     @spot = Spot.find(params[:id])
-    
     if @spot.update(spot_params)
       if @spot.spot_tag
         @spot.spot_tag = @spot.spot_tag.delete("[").delete("]")
