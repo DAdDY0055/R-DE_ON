@@ -27,9 +27,11 @@ class SpotsController < ApplicationController
     @spot.spot_tag = @spot.spot_tag.delete("[").delete("]") if @spot.spot_tag
 
     require 'exifr/jpeg'
-    if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
-      @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
-      @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
+    if @spot.spot_photo.file
+      if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
+        @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
+        @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
+      end
     end
     if @spot.save
       redirect_to spots_path, notice: '登録しました！'
