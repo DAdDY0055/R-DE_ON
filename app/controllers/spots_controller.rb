@@ -28,7 +28,7 @@ class SpotsController < ApplicationController
 
     require 'exifr/jpeg'
     if @spot.spot_photo.file
-      if EXIFR::JPEG.new(@spot.spot_photo.file.file).exif?
+      if EXIFR::JPEG::new(@spot.spot_photo.file.file).gps
         @spot.latitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.latitude
         @spot.longitude = EXIFR::JPEG::new(@spot.spot_photo.file.file).gps.longitude
       end
