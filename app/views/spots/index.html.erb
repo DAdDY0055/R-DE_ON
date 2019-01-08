@@ -3,20 +3,25 @@
 <div class="marker" id="map" style="width: 100％; height: 400px;"></div>
 
 <article id="map">
-
-<div class="spot_search">
-  <a>スポット絞り込み：<%= @tag if @tag %></a>
-
-  <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
+  <div class="spot_search">
+    <p>スポット絞り込み：<%= @tag.gsub(/"/, '') if @tag %></p>
+    <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
       <% %w(休憩 グルメ コンビニ お手洗い 自動販売機 全表示).each.with_index do |tag, i| %>
       <label>
         <%= form.radio_button :spot_tag, tag %>
         <%= tag %>
       </label>
       <% end %>
-      <%= submit_tag "Search", class: "btn btn-success" %>
-    </div>
-  <% end %>
+    <p>地図絞り込み：<%= @map_narrowing_down_location if @map_narrowing_down_location %></p>
+　    <!-- 前に入力した値があれば検索フォームに入力する -->
+      <% if @map_narrowing_down_location %>
+        <%= form.text_field :map_narrowing_down, value: @map_narrowing_down_location %>
+      <% else %>
+        <%= form.text_field :map_narrowing_down %>
+      <% end %>
+　    <%= submit_tag "絞り込み", class: "btn btn-success" %>
+    <% end %>
+  </div>
 </article>
 
 <p><%= link_to "R!DE ON!について", about_index_path, class: "btn btn-info" %><p>
@@ -73,7 +78,7 @@
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setCenter(new google.maps.LatLng(38.681583, 137.957183));
-    handler.getMap().setZoom(5);
+    handler.getMap().setCenter(new google.maps.LatLng(<%= @map_latitude %>, <%= @map_longitude %>));
+    handler.getMap().setZoom(<%= @map_zoon %>);
   });
 </script>

@@ -2,13 +2,34 @@ class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :likes]
 
   def index
-    # タグの絞り込み確認。絞り込みがある場合、対象のみインスタンス変数に格納。
-    if params[:spot].nil? || params[:spot][:spot_tag] == "全表示"
+    #タグ検索や地図絞り込みがない場合、日本全体で全スポット表示
+    if params[:spot].nil?
       @spot = Spot.all
+      @map_latitude  = 38.681583
+      @map_longitude = 137.957183
+      @map_zoon = 5
     else
-      @tag = params[:spot][:spot_tag].inspect
-      @spot = Spot.tag_search(@tag)
+      # タグの絞り込みがある場合、対象のみインスタンス変数に格納。
+      if params[:spot][:spot_tag].nil? || params[:spot][:spot_tag] == "全表示"
+        @spot = Spot.all
+      else
+        @tag = params[:spot][:spot_tag].inspect
+        @spot = Spot.tag_search(@tag)
+      end
+      # 地図の絞り込みがある場合、指定地点を中心に表示
+      if params[:spot][:map_narrowing_down] == ""
+        @map_latitude  = 38.681583
+        @map_longitude = 137.957183
+        @map_zoon = 5
+      else
+        @map_narrowing_down_location = params[:spot][:map_narrowing_down]
+        @map = Geocoder.search(@map_narrowing_down_location)
+        @map_latitude  = @map.first.latitude
+        @map_longitude = @map.first.longitude
+        @map_zoon = 12
+      end
     end
+
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
@@ -88,7 +109,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation, spot_tag:[])
+    params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation, spot_tag:[], map_narrowing_down:[])
   end
 
 end
