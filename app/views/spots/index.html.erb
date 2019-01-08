@@ -9,7 +9,7 @@
 
   <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
 
-      <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
+      <% %w(休憩 グルメ コンビニ お手洗い 自動販売機 全表示).each.with_index do |tag, i| %>
       <label>
         <%= form.radio_button :spot_tag, tag %>
         <%= tag %>

@@ -3,12 +3,11 @@ class SpotsController < ApplicationController
 
   def index
     # タグの絞り込み確認。絞り込みがある場合、対象のみインスタンス変数に格納。
-    if params[:spot].present?
+    if params[:spot].nil? || params[:spot][:spot_tag] == "全表示"
+      @spot = Spot.all
+    else
       @tag = params[:spot][:spot_tag].inspect
       @spot = Spot.tag_search(@tag)
-    else
-      # タグの絞り込みがない場合、全てのスポットをインスタンス変数に格納。
-      @spot = Spot.all
     end
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
