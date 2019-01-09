@@ -4,7 +4,7 @@
 
 <article id="map">
   <div class="spot_search">
-    <p>スポット絞り込み：<%= @tag.gsub(/"/, '') if @tag %></p>
+    <a>スポット絞り込み：<%= @tag.gsub(/"/, '') if @tag %></a>
     <%= form_with(model: @spot, url: spots_path, method: :get, local: true) do |form| %>
       <% %w(休憩 グルメ コンビニ お手洗い 自動販売機 全表示).each.with_index do |tag, i| %>
       <label>
@@ -12,7 +12,8 @@
         <%= tag %>
       </label>
       <% end %>
-    <p>地図絞り込み：<%= @map_narrowing_down_location if @map_narrowing_down_location %></p>
+    <br>
+    <a>地図絞り込み(Mapに表示させる場所を指定)：<%= @map_narrowing_down_location if @map_narrowing_down_location %></a><br>
 　    <!-- 前に入力した値があれば検索フォームに入力する -->
       <% if @map_narrowing_down_location %>
         <%= form.text_field :map_narrowing_down, value: @map_narrowing_down_location %>
