@@ -1,21 +1,16 @@
-(function() {
+document.addEventListener('turbolinks:load', function initMap() {
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'maps'}}, function(){
+    // gonで受け取った変数を定義
+    var map_hash      = gon.map_hash
+    var map_latitude  = gon.map_latitude 
+    var map_longitude = gon.map_longitude
+    var map_zoon      = gon.map_zoon
 
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": 0,
-      "lng": 0,
-      "picture": {
-        "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-        "width":  32,
-        "height": 32
-      },
-      "infowindow": "hello!"
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
+    markers = handler.addMarkers(map_hash);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setCenter(new google.maps.LatLng(map_latitude, map_longitude));
+    handler.getMap().setZoom(map_zoon);
+  });
 });
-
-}).call(this);

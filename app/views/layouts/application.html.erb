@@ -8,6 +8,7 @@
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="//maps.google.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"]%>"></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -20,13 +21,13 @@
     <!-- header始まり -->
     <header>
       <div class="logo">
-        <%= link_to "R!DE ON!", spots_path %>
+        <%= link_to "R!DE ON!", spots_path, data: {"turbolinks" => false} %>
       </div>
       <nav>
         <ul class="global-nav">
         <% if user_signed_in? %>
           <li><%= link_to "新規投稿", new_spot_path %></li>
-          <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li><%= link_to "プロフィール", user_path(current_user.id), data: {"turbolinks" => false} %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "新規登録", new_user_registration_path %></li>
