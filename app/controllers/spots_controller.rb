@@ -36,8 +36,7 @@ class SpotsController < ApplicationController
       marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
     
-    @hash_json = @hash.to_json
-    gon.map_hash = @hash.to_json
+    gon.map_hash = json_unescape(@hash.to_json)
 
 end
 
@@ -110,10 +109,25 @@ end
     redirect_to spot_path(@spot.id), notice:"いいねしました！"
   end
 
+  def json_unescape(str)
+    str.gsub(/\\([\\\/]|u[0-9a-fA-F]{4})/) do
+      ustr = $1
+      if ustr.starts_with?('u')
+        [ustr[1..-1].to_i(16)].pack("U")
+      elsif ustr == '\\'
+        '\\\\'
+      else
+        ustr
+      end
+    end
+  end
+
   private
 
   def spot_params
     params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation, spot_tag:[], map_narrowing_down:[])
   end
+
+  
 
 end

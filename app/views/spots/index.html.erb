@@ -1,8 +1,10 @@
+<script>
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+</script>
+
 <h2>Map</h2>
 
 <div class="marker" id="map" style="width: 100％; height: 400px;"></div>
-
-<input name="map_hash" type="hidden" value=<%= @hash_json %> class='map_hash' />
 
 <article id="map">
   <div class="spot_search">
@@ -74,14 +76,3 @@
     </div>
   </div>
 </article>
-
-<script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setCenter(new google.maps.LatLng(<%= @map_latitude %>, <%= @map_longitude %>));
-    handler.getMap().setZoom(<%= @map_zoon %>);
-  });
-</script>
