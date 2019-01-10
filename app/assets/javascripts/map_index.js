@@ -10,8 +10,6 @@ document.addEventListener('turbolinks:load', function initMap() {
 
     markers = handler.addMarkers(map_hash);
     handler.bounds.extendWith(markers);
-    console.log(map_hash);
-    console.log(markers);
     handler.fitMapToBounds();
     handler.getMap().setCenter(new google.maps.LatLng(map_latitude, map_longitude));
     handler.getMap().setZoom(map_zoon);

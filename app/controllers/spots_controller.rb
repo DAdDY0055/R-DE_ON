@@ -35,8 +35,8 @@ class SpotsController < ApplicationController
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
-    
-    gon.map_hash = json_unescape(@hash.to_json)
+
+    gon.map_hash = @hash
 
 end
 
@@ -127,7 +127,5 @@ end
   def spot_params
     params.require(:spot).permit(:spot_name, :address, :spot_photo, :spot_photo_cache, :spot_infomation, spot_tag:[], map_narrowing_down:[])
   end
-
-  
 
 end
