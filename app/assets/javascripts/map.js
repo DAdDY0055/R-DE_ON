@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function initMap() {
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'maps'}}, function(){
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     // gonで受け取った変数を定義
     var map_hash      = gon.map_hash
     var map_latitude  = gon.map_latitude 
