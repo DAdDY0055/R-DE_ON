@@ -2,6 +2,8 @@
 
 <div class="marker" id="map" style="width: 100％; height: 400px;"></div>
 
+<input name="map_hash" type="hidden" value=<%= @hash_json %> class='map_hash' />
+
 <article id="map">
   <div class="spot_search">
     <a>スポット絞り込み：<%= @tag.gsub(/"/, '') if @tag %></a>

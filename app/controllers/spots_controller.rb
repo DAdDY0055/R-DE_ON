@@ -5,9 +5,9 @@ class SpotsController < ApplicationController
     #タグ検索や地図絞り込みがない場合、日本全体で全スポット表示
     if params[:spot].nil?
       @spot = Spot.all
-      @map_latitude  = 38.681583
-      @map_longitude = 137.957183
-      @map_zoon = 5
+      gon.map_latitude  = 38.681583
+      gon.map_longitude = 137.957183
+      gon.map_zoon = 5
     else
       # タグの絞り込みがある場合、対象のみインスタンス変数に格納。
       if params[:spot][:spot_tag].nil? || params[:spot][:spot_tag] == "全表示"
@@ -18,15 +18,15 @@ class SpotsController < ApplicationController
       end
       # 地図の絞り込みがある場合、指定地点を中心に表示
       if params[:spot][:map_narrowing_down] == ""
-        @map_latitude  = 38.681583
-        @map_longitude = 137.957183
-        @map_zoon = 5
+        gon.map_latitude  = 38.681583
+        gon.map_longitude = 137.957183
+        gon.map_zoon = 5
       else
         @map_narrowing_down_location = params[:spot][:map_narrowing_down]
-        @map = Geocoder.search(@map_narrowing_down_location)
-        @map_latitude  = @map.first.latitude
-        @map_longitude = @map.first.longitude
-        @map_zoon = 12
+        gon.map = Geocoder.search(@map_narrowing_down_location)
+        gon.map_latitude  = gon.map.first.latitude
+        gon.map_longitude = gon.map.first.longitude
+        gon.map_zoon = 12
       end
     end
 
@@ -35,7 +35,11 @@ class SpotsController < ApplicationController
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
-  end
+    
+    @hash_json = @hash.to_json
+    gon.map_hash = @hash.to_json
+
+end
 
   def new
     @spot = Spot.new
