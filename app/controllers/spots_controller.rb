@@ -36,7 +36,7 @@ class SpotsController < ApplicationController
       marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
     end
 
-    gon.map_hash = @hash
+    gon.map_hash = @hash # gon.map_hash = Gmaps4rails~ だと動かない。
 
 end
 
@@ -65,11 +65,25 @@ end
 
   def show
     @spot = Spot.find(params[:id])
+
     @tag  = Spot.find(params[:id]).spot_tag
     @favorite = current_user.favorites.find_by(spot_id: @spot.id) if current_user
 
     @comments = @spot.comments
     @comment  = @spot.comments.build
+
+    gon.map_latitude  = @spot.latitude
+    gon.map_longitude = @spot.longitude
+    gon.spot_address  = @spot.address
+    gon.map_zoon = 12
+
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+      marker.infowindow render_to_string(partial: "spots/infowindow", locals: { spot: spot })
+    end
+
+    gon.map_hash = @hash # gon.map_hash = Gmaps4rails~ だと動かない。
   end
 
   def edit
@@ -107,19 +121,6 @@ end
     @spot.like += 1
     @spot.save
     redirect_to spot_path(@spot.id), notice:"いいねしました！"
-  end
-
-  def json_unescape(str)
-    str.gsub(/\\([\\\/]|u[0-9a-fA-F]{4})/) do
-      ustr = $1
-      if ustr.starts_with?('u')
-        [ustr[1..-1].to_i(16)].pack("U")
-      elsif ustr == '\\'
-        '\\\\'
-      else
-        ustr
-      end
-    end
   end
 
   private
