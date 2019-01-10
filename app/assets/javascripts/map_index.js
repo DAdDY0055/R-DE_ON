@@ -8,6 +8,7 @@ document.addEventListener('turbolinks:load', function initMap() {
     var map_longitude = gon.map_longitude
     var map_zoon      = gon.map_zoon
 
+    markers = handler.addMarkers(map_hash);
     handler.bounds.extendWith(markers);
     console.log(map_hash);
     console.log(markers);
