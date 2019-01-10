@@ -10,14 +10,7 @@
       <%= @spot.address %>
     </p>
     
-    <style type="text/css">
-      #maps { height: 400px;
-        margin-left:auto;
-        margin-right:auto;
-        text-align:left;
-        width: 80%;}
-    </style>
-    <div id="maps"></div>
+    <div id="maps style=width: 80％; height: 400px;"></div>
     
     <p>
       <strong>スポット情報:</strong>
@@ -67,4 +60,4 @@
 </article>
 
 <!-- Map表示用のjavascript読み込み -->
-<%= javascript_include_tag 'map_index' %>
+<%= javascript_include_tag 'map' %>
