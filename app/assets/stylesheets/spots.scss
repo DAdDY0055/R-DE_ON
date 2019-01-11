@@ -113,6 +113,7 @@ img {
 .content {
   background-color: #ffffff;
   border: solid 2px #EEEEEE;
+  position: relative;
 }
 
 .content h3 {
@@ -121,11 +122,9 @@ img {
   background-color: #333333;
   display: inline-block;
   opacity: 0.8;
-  margin: 10px 0px 0px 5px;
-}
-
-.content img {
-  margin-top: -30px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 .content img:hover {
