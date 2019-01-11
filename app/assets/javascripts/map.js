@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', function initMap() {
+$(document).on("turbolinks:load", function() {
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     // gonで受け取った変数を定義
