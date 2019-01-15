@@ -1,3 +1,3 @@
-$("#comment_error").html("")
+$("#comment_error").html("") <%# エラーメッセージの削除 %>
 $("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.spot.comments, spot: @comment.spot }) %>")
 $("textarea").val('')
