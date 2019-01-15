@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render :index }
       elsif @comment.content == ""
-        format.html { redirect_to spot_path(@spot), notice: 'コメントを入力してください' }
+        format.js { render :error }
       else
         format.html { redirect_to spot_path(@spot), notice: '投稿に失敗しました' }
       end

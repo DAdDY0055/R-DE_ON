@@ -11,14 +11,40 @@
   <% end %>
 
   <% if current_user %>
-  <div class="field">
-    <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメント" %>
-  </div>
-  <div class="actions">
-    <%= form.submit "コメントを投稿する", class: "btn btn-success" %>
+    <div class="field">
+      <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメント" %>
+      <span id="comment_error" class="error_m"></span>
+    </div>
+    <div class="actions">
+      <%= form.submit "コメントを投稿する", class: "btn btn-success" %>
   <% else %>
-    <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメントはログインしているユーザのみ可能です", readonly: "true" %>
-    <br>
+      <%= form.text_area :content, class: "form-control", type: "text", placeholder: "コメントはログインしているユーザのみ可能です", readonly: "true" %>
+      <br>
   <% end %>
-  </div>
+    </div>
 <% end %>
+
+<script type="text/javascript">
+ 
+    // 入力内容チェックのための関数
+    function input_check(){
+    var result = true;
+ 
+    // 入力エラー文をリセット
+    $("#comment_error").empty();
+ 
+    // 入力内容セット
+    var comment  = $("#comment").val();
+    console.log(comment)
+ 
+    // 入力内容チェック
+    // お問い合わせ内容
+    if(comment == ""){
+        $("#comment_error").html("<i class='fa fa-exclamation-circle'></i> コメントは必須です。");
+        $("#comment").addClass("inp_error");
+        result = false;
+    }
+ 
+    return result;
+}
+</script>

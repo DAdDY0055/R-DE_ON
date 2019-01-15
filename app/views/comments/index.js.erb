@@ -1,2 +1,3 @@
+$("#comment_error").html("")
 $("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.spot.comments, spot: @comment.spot }) %>")
 $("textarea").val('')
