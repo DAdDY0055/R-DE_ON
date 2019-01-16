@@ -4,7 +4,7 @@ $(function() {
   const spotregex = new RegExp(/spots\/\d+/); //spotsのshowのurlの正規表現
   const userregex = new RegExp(/users\/\d+/); //usersのshowのurlの正規表現
 
-  if(currentPASS  == '/spots' || spotregex.test(currentPASS) || userregex.test(currentPASS) ) {
+  if(currentPASS  == '/spots' || currentPASS  == '/' || spotregex.test(currentPASS) || userregex.test(currentPASS) ) {
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       // gonで受け取った変数を定義
