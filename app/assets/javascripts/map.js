@@ -9,10 +9,10 @@ $(function() {
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       // gonで受け取った変数を定義
       const map_hash      = gon.map_hash
-      const map_latitude  = gon.map_latitude 
+      const map_latitude  = gon.map_latitude
       const map_longitude = gon.map_longitude
       const map_zoon      = gon.map_zoon
-  
+
       markers = handler.addMarkers(map_hash);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();

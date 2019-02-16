@@ -7,19 +7,19 @@
     <dl>
       <dt><span class="required"><%= form.label :スポット名 %></span></dt>
       <dd><%= form.text_field :spot_name, class: "new_form" %></dd>
-    
+
       <dt><span class="either"><%= form.label :住所 %></span></dt>
       <dd><%= form.text_field :address, class: "new_form" %></dd>
-  
+
 　    <dt><%= form.label :現在の写真 %></dt>
       <dd><%= image_tag @spot.spot_photo.url %></dd>
 
       <dt><span class="either"><%= form.label :新しい写真を選択 %></span></dt>
       <dd><%= form.file_field :spot_photo %></dd>
-  
+
       <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
       <dd><%= form.text_area :spot_infomation, class: "new_text_area_form" %></dd>
-      
+
       <dt><strong>現在のスポット分類：</strong></dt>
       <dd><%= @spot.spot_tag.gsub(/"/, '') if @spot.spot_tag %></dd> <!-- 配列として格納されているspot_tagの"を削除して表示 -->
 
@@ -45,7 +45,7 @@
           </label>
         <% end %>
       <% end %>
-      </dd>  
+      </dd>
     <dl>
       <%= form.submit "変更を保存する", class: "btn btn-primary" %>
     <% end %>

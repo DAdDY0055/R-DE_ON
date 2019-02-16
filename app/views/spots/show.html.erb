@@ -4,19 +4,19 @@
 
   <div class="content">
     <p class="picture_content"><%= image_tag @spot.spot_photo.url %></p>
-    
+
     <p>
       <strong>住所:</strong>
       <%= @spot.address %>
     </p>
-    
+
     <div id="map" style="width: 100％; height: 400px;"></div>
 
     <p>
       <strong>スポット情報:</strong>
       <%= @spot.spot_infomation %>
     </p>
-    
+
     <p>
       <strong>スポットタグ：</strong>
       <!-- 配列として格納されているspot_tagの"を削除して表示 -->
@@ -38,7 +38,7 @@
       <%= link_to "いいね！", likes_spot_path(@spot.id) %>
       <%= @spot.like %>
     </div>
-    
+
 　  <p><strong>コメント:</strong></p>
 
     <div id="comments_area">

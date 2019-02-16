@@ -24,17 +24,17 @@
     <dl>
       <dt><span class="required"><%= form.label :スポット名 %></span></dt>
       <dd><%= form.text_field :spot_name, class: "new_form" %></dd>
-    
+
       <dt><span class="either"><%= form.label :住所 %></span></dt>※位置情報(EXIF情報)つきのjpeg画像をアップロードする場合は不要
       <dd><%= form.text_field :address, class: "new_form" %></dd>
-  
+
       <dt><span class="required"><%= form.label :写真 %></span></dt>
       <div class="imagePreview"></div>
       <dd><%= form.file_field :spot_photo %></dd>
-  
+
       <dt><span class="required"><%= form.label :スポット詳細 %></span></dt>
       <dd><%= form.text_area :spot_infomation, class: "new_text_area_form" %></dd>
-  
+
       <dt><%= form.label :スポット分類 %></dt>
       <dd>
       <% %w(休憩 グルメ コンビニ お手洗い 自動販売機).each.with_index do |tag, i| %>
@@ -43,7 +43,7 @@
           <%= tag %>
         </label>
         <% end %>
-      </dd>  
+      </dd>
     <dl>
     <%= form.submit "登録する", class: "btn btn-primary" %>
   <% end %>

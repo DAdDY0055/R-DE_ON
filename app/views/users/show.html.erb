@@ -4,7 +4,7 @@
 <article id="index">
   <div class="container">
     <div class="row">
-  
+
       <section class="spots col-md-4">
         <h2><%= @user.name %>の投稿</h2>
         <% @user_spot.each do |spot| %>
@@ -18,7 +18,7 @@
         </div>
         <% end %>
       </section>
-      
+
       <section class="spots col-md-4">
         <h2><%= @user.name %>のお気に入り</h2>
         <% @favorite_spot.each do |spot| %>
@@ -32,7 +32,7 @@
         </div>
         <% end %>
       </section>
-      
+
       <section class="profile col-md-4">
         <h2>プロフィール</h2>
         <div class="content">

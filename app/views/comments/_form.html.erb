@@ -25,18 +25,18 @@
 <% end %>
 
 <script type="text/javascript">
- 
+
     // 入力内容チェックのための関数
     function input_check(){
     var result = true;
- 
+
     // 入力エラー文をリセット
     $("#comment_error").empty();
- 
+
     // 入力内容セット
     var comment  = $("#comment").val();
     console.log(comment)
- 
+
     // 入力内容チェック
     // お問い合わせ内容
     if(comment == ""){
@@ -44,7 +44,7 @@
         $("#comment").addClass("inp_error");
         result = false;
     }
- 
+
     return result;
 }
 </script>
